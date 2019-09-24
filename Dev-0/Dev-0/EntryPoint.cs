@@ -10,8 +10,8 @@
         /// </summary>
         static void Main()
         {
-          var calculator = new CalculatorMaximumNumberRepeatingLetters("asdffrtttsssssrt");
-          int maximumNumberRepeatingLetters = calculator.Calculate();
+          var counter = new CounterMaximumNumberRepeatingLetters("asdffrtttsssssrt");
+          int maximumNumberRepeatingLetters = counter.Count();
         }
     }
 }
