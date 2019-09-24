@@ -5,7 +5,7 @@ namespace Dev_0
     /// <summary>
     ///The main class of the program    
     /// </summary>
-    class EntryPoiny
+    class EntryPoint
     {
         /// <summary>
         /// The entry point.
@@ -13,7 +13,7 @@ namespace Dev_0
         static void Main()
         {
             //Method Testing
-            Console.WriteLine(NumberOfRepeatedLetters.Calculate("asdffrtttsssssrt"));
+            Console.WriteLine(CalculatorMaximumNumberRepeatingLetters.Calculate("asdffrtttsssssrt"));
         }
     }
 }

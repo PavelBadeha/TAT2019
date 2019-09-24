@@ -3,7 +3,7 @@ namespace Dev_0
 {   /// <summary>
     /// The class that contains a method which returns maximum number of repeated consecutive letters
     /// </summary>
-    class NumberOfRepeatedLetters
+    class CalculatorMaximumNumberRepeatingLetters
     {
         /// <summary>
         /// The method returns maximum number of repeated consecutive letters
