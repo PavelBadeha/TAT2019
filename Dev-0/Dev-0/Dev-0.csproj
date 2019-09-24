@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntryPoiny.cs" />
+    <Compile Include="EntryPoint.cs" />
     <Compile Include="NumberOfRepeatedLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
