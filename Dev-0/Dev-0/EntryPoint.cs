@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Dev_0
+﻿namespace Dev_0
 {
     /// <summary>
     ///The main class of the program    
@@ -12,8 +10,8 @@ namespace Dev_0
         /// </summary>
         static void Main()
         {
-            //Method Testing
-            Console.WriteLine(CalculatorMaximumNumberRepeatingLetters.Calculate("asdffrtttsssssrt"));
+          var calculator = new CalculatorMaximumNumberRepeatingLetters("asdffrtttsssssrt");
+          int maximumNumberRepeatingLetters = calculator.Calculate();
         }
     }
 }
