@@ -1,11 +1,12 @@
 ﻿namespace Dev_0
-{   /// <summary>
+{   
+    /// <summary>
     /// The class that contains a method which returns maximum number of repeated consecutive letters
     /// </summary>
     class CounterMaximumNumberRepeatingLetters
     {
         /// <summary>
-        /// <param name="_str">Class string field for which calculations will be performed</param>
+        /// <param name="_str">String field for which counts will be performed</param>
         /// </summary>
         private string _str = string.Empty;
 
