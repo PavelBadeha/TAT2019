@@ -33,9 +33,14 @@
                     count++;
                 }
                 else
+                {
                     count = 1;
+                }
+
                 if (max < count)
+                {
                     max = count;
+                }
             }
             return max;
         }
