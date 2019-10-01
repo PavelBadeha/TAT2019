@@ -67,7 +67,7 @@ namespace CW_1
             
             for (int i = 0; i < 3; i++)
             {
-                if (sides[i] - temp.sides[i] > Double.Epsilon)
+                if (Math.Abs(sides[i] - temp.sides[i]) > Double.Epsilon)
                 {
                     return false;
                 }
