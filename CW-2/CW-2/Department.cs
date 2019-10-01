@@ -13,6 +13,7 @@ namespace CW_2
         /// String property, name of the department.
         /// </summary>
         public string Name { get; set; } = String.Empty;
+
         /// <summary>
         /// Address property.
         /// </summary>
