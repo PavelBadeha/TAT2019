@@ -11,10 +11,10 @@ namespace CW_2
         /// <summary>
         /// List property, list of the departments.
         /// </summary>
-        public List<Department> Departments = new List<Department>();
+        public List<Department> Departments { get; } = new List<Department>();
 
         /// <summary>
-        /// Parametersless constructor.
+        /// Parameterless constructor.
         /// </summary>
         public University() { }
 
@@ -29,7 +29,7 @@ namespace CW_2
             bool check = false;
             foreach (var tempDepartment in Departments)
             {
-                if (tempDepartment.IsEqual(department))
+                if (tempDepartment.Equals(department) || Departments.Count >= 10) 
                 {
                     check = true;
                     break;

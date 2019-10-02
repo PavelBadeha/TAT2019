@@ -1,16 +1,24 @@
-﻿namespace CW_2
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+namespace CW_2
 {
     /// <summary>
     /// Class of institute inheritor of Department.
     /// </summary>
     class Institute :Department
     {
+        public  Head Head { get; }=new Head();
+
+        public List<Accountant> Accountants { get; }= new List<Accountant>();
+
         #region Constructors
 
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
-        public Institute() : base() { }
+        public Institute() { }
 
         /// <summary>
         /// Class constructor.
@@ -28,6 +36,11 @@
         /// <param name="name">Name of the faculty.</param>
         /// <param name="address">Address.</param>
         public Institute(string name, Address address) : base(name, address) { }
+
+        public Institute(string name, Address address, List<Accountant> accountants) : base(name, address)
+        {
+            Accountants.AddRange(accountants);
+        }
 
         #endregion
     }

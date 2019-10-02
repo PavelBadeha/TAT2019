@@ -12,17 +12,17 @@ namespace CW_2
         /// <summary>
         /// String property, name of the city.
         /// </summary>
-        public string City { get; set; } = String.Empty;
+        public string City { get; } = String.Empty;
 
         /// <summary>
         /// String property, name of the street.
         /// </summary>
-        public string Street { get; set; } = String.Empty;
+        public string Street { get;  } = String.Empty;
 
         /// <summary>
         /// String property, The house number.
         /// </summary>
-        public string HouseNumber { get; set; } = String.Empty;
+        public string HouseNumber { get;} = String.Empty;
 
         #endregion
 

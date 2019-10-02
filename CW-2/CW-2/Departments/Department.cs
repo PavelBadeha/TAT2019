@@ -72,10 +72,17 @@ namespace CW_2
         /// </summary>
         /// <param name="objDepartment">Department to be compared with.</param>
         /// <returns>True if is equal and false if isn't equal.</returns>
-        public bool IsEqual(Department objDepartment)
+        public override bool Equals(object objDepartment)
         {
-            return this.GetType() == objDepartment.GetType() && this.Address.Equals(objDepartment.Address) &&
-                   this.Name.Equals(objDepartment.Name);
+            if (!(objDepartment is Department))
+            {
+                return false;
+            }
+
+            Department tempDepartment = (Department) objDepartment;
+            
+            return this.GetType() == tempDepartment.GetType() && this.Address.Equals(tempDepartment.Address) &&
+                   this.Name.Equals(tempDepartment.Name);
         }
 
         #endregion

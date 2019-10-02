@@ -1,10 +1,17 @@
-﻿namespace CW_2
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+namespace CW_2
 {
     /// <summary>
     /// Class of faculty inheritor of Department.
     /// </summary>
     class Faculty:Department
     {
+        public  Dean Dean { get; }=new Dean();
+
+        public List<Student> Students { get; } = new List<Student>();
+
         #region Constructors
 
         /// <summary>
@@ -30,5 +37,23 @@
         public Faculty(string name, Address address) : base(name, address) { }
 
         #endregion
+
+        public void AddStudent(Student student)
+        {
+            bool check = true;
+            foreach (var tempStudent in Students)
+            {
+                if (tempStudent.Equals(student))
+                {
+                    check = false;
+                    break;
+                }
+            }
+
+            if (check)
+            {
+                Students.Add(student);
+            }
+        }
     }
 }
