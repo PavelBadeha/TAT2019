@@ -16,5 +16,10 @@ namespace CW_2
         {
             HoursPerWeek = hoursPerWeek;
         }
+
+        public override string ToString()
+        {
+            return "Accountant\n" +base.ToString()+" Hours per week:"+ HoursPerWeek ;
+        }
     }
 }

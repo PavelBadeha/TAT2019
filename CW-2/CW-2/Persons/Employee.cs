@@ -15,5 +15,10 @@ namespace CW_2
         {
             Salary = salary;
         }
+
+        public override string ToString()
+        {
+            return "Employee\n" +base.ToString()+" Salary:"+Salary;
+        }
     }
 }

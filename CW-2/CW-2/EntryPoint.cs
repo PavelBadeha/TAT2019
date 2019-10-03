@@ -1,4 +1,6 @@
-﻿namespace CW_2
+﻿using System;
+
+namespace CW_2
 {
     /// <summary>
     ///Main class of the program. 
@@ -10,11 +12,20 @@
         /// </summary>
         static void Main()
         {
-            Department faculty = new Faculty("RF","Minsk","Kurchatova","8");
-            Department institute = new Institute("inst", "Gomel", "Kurchatova", "8");
-            Department management = new Management("manag", "Brest", "Kurchatova", "8");
-            Department facultyCopy = new Faculty("RF", "Minsk", "Kurchatova", "8");
+            Person head = new Head("Ighor Kheidorov",50,7777);
+            Person dean = new Dean("Maloy",50,602);
+            Person head2 = new Head("Korol",45,9999);
+            Address address = new Address("Minsk", "Kurchatova", "8");
+            Faculty faculty = new Faculty("RF",address,(Dean)dean);
+            Institute institute = new Institute("inst",address,(Head)head);
+            Management management = new Management("manage",address,(Head)head);
+            Faculty facultyCopy = new Faculty("RF",address,(Dean)dean);
             University university = new University();
+
+            Student pasha = new Student("Pasha", 19);
+            Accountant accountant = new Accountant("Petrova",50,40);
+            faculty.AddStudent(pasha);
+            management.AddAccountant(accountant);
 
             university.AddDepartment(faculty);
             university.AddDepartment(institute);

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design;
 
 namespace CW_2
 {
@@ -11,7 +9,7 @@ namespace CW_2
     {
         public Head Head { get; }= new Head();
 
-        public List<Employee> Employees { get; } = new List<Employee>();
+        public List<Accountant> Accountants { get; } = new List<Accountant>();
 
         #region Constructors
 
@@ -42,18 +40,22 @@ namespace CW_2
             Head = head;
         }
 
-        public Management(string name, Address address, List<Employee> employees) : base(name, address)
+        public Management(string name, Address address, List<Accountant> accountants) : base(name, address)
         {
-            Employees.AddRange(employees);
+            Accountants.AddRange(accountants);
         }
         #endregion
+        public override string ToString()
+        {
+            return "Management\n" + base.ToString() + "\n" + Head.ToString() + "\nQuantity of accountants:" + Accountants.Count;
+        }
 
-        public void AddEmployee(Employee employee)
+    public void AddAccountant(Accountant accountant)
         {
             bool check = true;
-            foreach (var tempStudent in Employees)
+            foreach (var tempAccountant in Accountants)
             {
-                if (tempStudent.Equals(employee))
+                if (tempAccountant.Equals(accountant))
                 {
                     check = false;
                     break;
@@ -62,7 +64,7 @@ namespace CW_2
 
             if (check)
             {
-                Employees.Add(employee);
+                Accountants.Add(accountant);
             }
         }
     }

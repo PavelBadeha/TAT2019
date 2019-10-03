@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CW_2
 {
@@ -55,5 +56,15 @@ namespace CW_2
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            StringBuilder departments = new StringBuilder();
+            foreach (var department in Departments)
+            {
+                departments.Append(department + "\n");
+            }
+            return departments.ToString();
+        }
     }
 }

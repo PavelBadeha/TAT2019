@@ -11,7 +11,7 @@ namespace CW_2
     {
         public  Head Head { get; }=new Head();
 
-        public List<Accountant> Accountants { get; }= new List<Accountant>();
+        public List<Employee> Employees { get; }= new List<Employee>();
 
         #region Constructors
 
@@ -37,11 +37,34 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Institute(string name, Address address) : base(name, address) { }
 
-        public Institute(string name, Address address, List<Accountant> accountants) : base(name, address)
+        public Institute(string name, Address address, Head head) : base(name, address)
         {
-            Accountants.AddRange(accountants);
+            Head = head;
         }
 
         #endregion
+
+        public void AddEmoloyee(Employee employee)
+        {
+            bool check = true;
+            foreach (var tempEmployee in Employees)
+            {
+                if (tempEmployee.Equals(employee))
+                {
+                    check = false;
+                    break;
+                }
+            }
+
+            if (check)
+            {
+                Employees.Add(employee);
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Institute\n" + base.ToString() + "\n" + Head.ToString() + "\nQuantity of employees:" + Employees.Count;
+        }
     }
 }

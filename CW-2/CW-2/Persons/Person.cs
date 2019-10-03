@@ -33,5 +33,10 @@ namespace CW_2
 
             return Name.Equals(person.Name) && Age == person.Age;
         }
+
+        public override string ToString()
+        {
+            return "Name:"+Name+" Age:"+Age;
+        }
     }
 }

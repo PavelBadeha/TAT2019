@@ -15,5 +15,10 @@ namespace CW_2
         {
             Office = office;
         }
+
+        public override string ToString()
+        {
+            return "Dean\n"+base.ToString()+" Office:"+Office;
+        }
     }
 }

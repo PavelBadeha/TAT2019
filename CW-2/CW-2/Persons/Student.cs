@@ -16,7 +16,19 @@ namespace CW_2
 
         public Student(string name, int age, int[] marks) : base(name, age)
         {
-            this.Marks.CopyTo(marks, 0);
+            marks.CopyTo(Marks,0);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder marks = new StringBuilder();
+            foreach (var mark in Marks)
+            {
+                marks.Append(mark+",");
+            }
+
+            marks[marks.Length-1] = '.';
+            return "Student\n" + base.ToString() +" Marks:" + marks;
         }
     }
 }

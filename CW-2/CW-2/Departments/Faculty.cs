@@ -36,6 +36,11 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Faculty(string name, Address address) : base(name, address) { }
 
+        public Faculty(string name, Address address, Dean dean) : base(name, address)
+        {
+            Dean = dean;
+        }
+
         #endregion
 
         public void AddStudent(Student student)
@@ -54,6 +59,11 @@ namespace CW_2
             {
                 Students.Add(student);
             }
+        }
+
+        public override string ToString()
+        {
+            return "Faculty\n" +base.ToString() + "\n"+Dean.ToString()+"\nQuantity of student: "+Students.Count;
         }
     }
 }

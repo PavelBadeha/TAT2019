@@ -16,5 +16,10 @@ namespace CW_2
         {
             CarNumber = carNumber;
         }
+
+        public override string ToString()
+        {
+            return "Head\n" + base.ToString()+" Car number:"+CarNumber;
+        }
     }
 }
