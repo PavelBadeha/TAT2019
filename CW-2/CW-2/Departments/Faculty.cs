@@ -10,8 +10,6 @@ namespace CW_2
     {
         public  Dean Dean { get; }=new Dean();
 
-        public List<Student> Students { get; } = new List<Student>();
-
         #region Constructors
 
         /// <summary>
@@ -43,27 +41,18 @@ namespace CW_2
 
         #endregion
 
-        public void AddStudent(Student student)
+        public override void AddMember(Person person)
         {
-            bool check = true;
-            foreach (var tempStudent in Students)
+            MaxSizeOfMemberList = 20;
+            if (person is Student && MemberList.Count < MaxSizeOfMemberList)
             {
-                if (tempStudent.Equals(student))
-                {
-                    check = false;
-                    break;
-                }
-            }
-
-            if (check)
-            {
-                Students.Add(student);
+                base.AddMember(person);
             }
         }
 
         public override string ToString()
         {
-            return "Faculty\n" +base.ToString() + "\n"+Dean.ToString()+"\nQuantity of student: "+Students.Count;
+            return "Faculty\n" +base.ToString() + "\n" + Dean +"\nQuantity of student: "+MemberList.Count;
         }
     }
 }

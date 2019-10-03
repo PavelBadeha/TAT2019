@@ -14,10 +14,16 @@ namespace CW_2
         /// </summary>
         public List<Department> Departments { get; } = new List<Department>();
 
+        public Parking Parking { get; }=new Parking();
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
         public University() { }
+
+        public University(Parking parking)
+        {
+            Parking = parking;
+        }
 
         #region Methods
 
@@ -54,9 +60,6 @@ namespace CW_2
                Console.WriteLine();
             }
         }
-
-        #endregion
-
         public override string ToString()
         {
             StringBuilder departments = new StringBuilder();
@@ -66,5 +69,8 @@ namespace CW_2
             }
             return departments.ToString();
         }
+        #endregion
+
+
     }
 }

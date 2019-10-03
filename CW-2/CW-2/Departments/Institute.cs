@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -10,8 +11,6 @@ namespace CW_2
     class Institute :Department
     {
         public  Head Head { get; }=new Head();
-
-        public List<Employee> Employees { get; }= new List<Employee>();
 
         #region Constructors
 
@@ -44,27 +43,17 @@ namespace CW_2
 
         #endregion
 
-        public void AddEmoloyee(Employee employee)
+        public override void AddMember(Person person)
         {
-            bool check = true;
-            foreach (var tempEmployee in Employees)
+            if (person is Employee)
             {
-                if (tempEmployee.Equals(employee))
-                {
-                    check = false;
-                    break;
-                }
-            }
-
-            if (check)
-            {
-                Employees.Add(employee);
+                base.AddMember(person);
             }
         }
 
         public override string ToString()
         {
-            return "Institute\n" + base.ToString() + "\n" + Head.ToString() + "\nQuantity of employees:" + Employees.Count;
+            return "Institute\n" + base.ToString() + "\n" + Head + "\nQuantity of employees:" + MemberList.Count;
         }
     }
 }

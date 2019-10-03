@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="Parking\Car.cs" />
+    <Compile Include="Parking\Parking.cs" />
+    <Compile Include="Parking\Garage.cs" />
     <Compile Include="Persons\Accountant.cs" />
     <Compile Include="Persons\Dean.cs" />
     <Compile Include="Departments\Department.cs" />

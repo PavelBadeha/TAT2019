@@ -9,8 +9,6 @@ namespace CW_2
     {
         public Head Head { get; }= new Head();
 
-        public List<Accountant> Accountants { get; } = new List<Accountant>();
-
         #region Constructors
 
         /// <summary>
@@ -42,29 +40,20 @@ namespace CW_2
 
         public Management(string name, Address address, List<Accountant> accountants) : base(name, address)
         {
-            Accountants.AddRange(accountants);
+            MemberList.AddRange(accountants);
         }
         #endregion
+
         public override string ToString()
         {
-            return "Management\n" + base.ToString() + "\n" + Head.ToString() + "\nQuantity of accountants:" + Accountants.Count;
+            return "Management\n" + base.ToString() + "\n" + Head + "\nQuantity of accountants:" + MemberList.Count;
         }
 
-    public void AddAccountant(Accountant accountant)
+        public override void AddMember(Person person)
         {
-            bool check = true;
-            foreach (var tempAccountant in Accountants)
+            if (person is Accountant)
             {
-                if (tempAccountant.Equals(accountant))
-                {
-                    check = false;
-                    break;
-                }
-            }
-
-            if (check)
-            {
-                Accountants.Add(accountant);
+                base.AddMember(person);
             }
         }
     }

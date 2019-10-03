@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CW_2
 {
@@ -9,10 +10,14 @@ namespace CW_2
     {
         #region Properties
 
+        public int MaxSizeOfMemberList { get; protected set; } =10;
+        public List<Person> MemberList { get; }=new List<Person>();
+
         /// <summary>
         /// String property, name of the department.
         /// </summary>
         public string Name { get; set; } = String.Empty;
+
         /// <summary>
         /// Address property.
         /// </summary>
@@ -30,6 +35,10 @@ namespace CW_2
             Address= new Address();
         }
 
+        public Department(Address address)
+        {
+            Address = address;
+        }
         /// <summary>
         /// Class constructor .
         /// </summary>
@@ -64,7 +73,7 @@ namespace CW_2
         /// <returns>String representation of the department.</returns>
         public override string ToString()
         {
-            return "Name: " + Name + "." + " Address:" + Address.ToString();
+            return "Name: " + Name + "." + " Address:" + Address;
         }
 
         /// <summary>
@@ -85,6 +94,23 @@ namespace CW_2
                    this.Name.Equals(tempDepartment.Name);
         }
 
+        public virtual void AddMember(Person person)
+        {
+            bool check = true;
+            foreach (var member in MemberList)
+            {
+                if (member.Equals(person))
+                {
+                    check = false;
+                    break;
+                }
+            }
+
+            if (check)
+            {
+                MemberList.Add(person);
+            }
+        }
         #endregion
     }
 }

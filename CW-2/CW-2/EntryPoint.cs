@@ -22,17 +22,19 @@ namespace CW_2
             Faculty facultyCopy = new Faculty("RF",address,(Dean)dean);
             University university = new University();
 
-            Student pasha = new Student("Pasha", 19);
+            Student pasha = new Student("Pasha", 19,new[ ]{4,4,4,4,5});
             Accountant accountant = new Accountant("Petrova",50,40);
-            faculty.AddStudent(pasha);
-            management.AddAccountant(accountant);
 
+            faculty.AddMember(pasha);
+            management.AddMember(accountant);
             university.AddDepartment(faculty);
             university.AddDepartment(institute);
             university.AddDepartment(management);
             university.AddDepartment(facultyCopy);
             university.DisplayDepartments();
 
+            Console.WriteLine(faculty.MemberList[0]+"\n");
+            Console.WriteLine(management.MemberList[0]);
         }
     }
 }
