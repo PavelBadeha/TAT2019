@@ -8,15 +8,24 @@
         <Student Name = "Pasha" Age = "19" Marks = "5,5,5,4,6" ></Student>
         <Student Name = "Dima" Age = "19" Marks = "2,10,5,4,6" ></Student>
         <Student Name = "Sanay" Age = "20" Marks = "5,5,5,4,6" ></Student>
+        <Student Name="Can" Age="21" Marks="2,2,2,2,2"></Student>
       </Students>
     </Faculty>
     <Institute Name="Noi">
       <Address Address="Minsk,Kurwa,5"></Address>
       <Head Name="Maloy" Age="50" CarNumber="602"></Head>
+      <Employees>
+        <Employee Name="Petrova" Age="60" Salary="500"></Employee>
+        <Employee Name="Petrova" Age="60" Salary="500"></Employee>
+      </Employees>
     </Institute>
     <Management Name="Hi">
       <Address Address="Minsk,Kurwa,5"></Address>
       <Head Name="Maloy" Age="50" CarNumber="602"></Head>
+      <Accountants>
+        <Accountant Name="Vasya" Age="29" HoursPerWeek="29"></Accountant>
+        <Accountant Name="Valera" Age="21" HoursPerWeek="200"></Accountant>
+      </Accountants>
     </Management>
   </Departments>
   <Parkings>
@@ -34,6 +43,12 @@
     <Parking Name="45">
       <Head Name="Syhach" Age="30" CarNumber="999"></Head>
       <Address Address="Saratove,Shlyapik,10"></Address>
+      <Garages>
+        <Garage QuantityOfSlots="1"></Garage>
+      </Garages>
+      <Cars>
+        <Car Number="1234" Brand="Skoda"></Car>
+      </Cars>
     </Parking>
   </Parkings>
 </University>

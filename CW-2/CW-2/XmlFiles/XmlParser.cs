@@ -66,7 +66,7 @@ namespace CW_2
             {
                 accountants.Add(new Accountant(accountantNode.Attributes["Name"].Value
                     , Int32.Parse(accountantNode.Attributes["Age"].Value)
-                    , Int32.Parse(accountantNode.Attributes["Hours per week"].Value)));
+                    , Int32.Parse(accountantNode.Attributes["HoursPerWeek"].Value)));
             }
 
             return accountants;
@@ -109,7 +109,8 @@ namespace CW_2
             Institute institute = new Institute(instituteXmlNode.Attributes["Name"].Value
                 , GeAddressFromXml(addressXmlNode: instituteXmlNode["Address"])
                 , GetHeadFromXml(headXmlNode: instituteXmlNode["Head"]));
-            if (instituteXmlNode["Empployees"] != null)
+          
+            if (instituteXmlNode["Employees"] != null)
             {
                 institute.AddMembers(GetListOfEmployeesFromXml(instituteXmlNode["Employees"]));
             }
@@ -122,9 +123,9 @@ namespace CW_2
             Management management = new Management(managementXmlNode.Attributes["Name"].Value
                 , GeAddressFromXml(addressXmlNode: managementXmlNode["Address"])
                 , GetHeadFromXml(headXmlNode: managementXmlNode["Head"]));
-            if (managementXmlNode["Head"] != null)
+            if (managementXmlNode["Accountants"] != null)
             {
-                management.AddMembers(GetListOfAccountantsFromXml(managementXmlNode["Head"]));
+                management.AddMembers(GetListOfAccountantsFromXml(managementXmlNode["Accountants"]));
             }
 
             return management;
