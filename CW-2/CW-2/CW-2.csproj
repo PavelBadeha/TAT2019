@@ -66,6 +66,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="XmlFiles\RfFaculty.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="XmlFiles\DepartmentsXml.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

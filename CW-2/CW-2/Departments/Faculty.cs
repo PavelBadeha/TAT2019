@@ -65,7 +65,6 @@ namespace CW_2
                 AddMember(student);
             }
         }
-
         public void AddStudentsFromXml(string fileName)
         {
             XmlParser xmlParser= new XmlParser(fileName);

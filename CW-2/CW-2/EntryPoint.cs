@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml;
 
 namespace CW_2
 {
@@ -15,10 +14,11 @@ namespace CW_2
         {
             University university = new University("XmlFiles/DepartmentsXml.xml");
             Faculty faculty = new Faculty("RF", "Minsk", "Kurchatova", "8");
-           
-            university.DisplayDepartments();
+           XmlParser xmlParser = new XmlParser("XmlFiles/RfFaculty.xml");
+           Faculty rfFaculty = xmlParser.GetFacultyFromXml(xmlParser.xRoot);
+            //university.DisplayDepartments();
             faculty.AddStudentsFromXml("XmlFiles/StudentsForRF.xml");
-            Console.WriteLine(faculty);
+            Console.WriteLine(rfFaculty);
         }
     }
 }
