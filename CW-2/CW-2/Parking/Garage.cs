@@ -8,13 +8,18 @@ namespace CW_2
 {
     class Garage
     {
-        public int QuantitySlots { get; }
+        public int QuantityOfSlots { get; }
 
         public Garage() { }
 
-        public Garage(int quantitySlots)
+        public Garage(int quantityOfSlots)
         {
-            QuantitySlots = quantitySlots;
+            QuantityOfSlots = quantityOfSlots;
+        }
+
+        public override string ToString()
+        {
+            return "Quantity Of Slots:"+QuantityOfSlots;
         }
     }
 }

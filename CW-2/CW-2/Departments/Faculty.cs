@@ -39,6 +39,14 @@ namespace CW_2
             Dean = dean;
         }
 
+        public Faculty(string name, Address address, Dean dean, List<Student> students) : base(name, address)
+        {
+            Dean = dean;
+            foreach (var student in students)
+            {
+                AddMember(student);
+            }
+        }
         #endregion
 
         public override void AddMember(Person person)
@@ -50,6 +58,13 @@ namespace CW_2
             }
         }
 
+        public void AddMembers(List<Student> students)
+        {
+            foreach (var student in students)
+            {
+                AddMember(student);
+            }
+        }
         public override string ToString()
         {
             return "Faculty\n" +base.ToString() + "\n" + Dean +"\nQuantity of student: "+MemberList.Count;

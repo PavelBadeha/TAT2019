@@ -60,9 +60,21 @@
     <Compile Include="Departments\Faculty.cs" />
     <Compile Include="Persons\Student.cs" />
     <Compile Include="University.cs" />
+    <Compile Include="XmlFiles\XmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XmlFiles\DepartmentsXml.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XmlFiles\FacultyXml.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XmlFiles\StudentsForRF.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

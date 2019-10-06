@@ -46,6 +46,12 @@ namespace CW_2
             HouseNumber = houseNumber;
         }
 
+        public Address(string[] address)
+        {
+            City = address[0];
+            Street = address[1];
+            HouseNumber = address[2];
+        }
         #endregion
 
         #region Methods

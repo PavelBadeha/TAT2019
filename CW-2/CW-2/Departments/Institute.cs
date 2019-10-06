@@ -51,6 +51,13 @@ namespace CW_2
             }
         }
 
+        public void AddMembers(List<Employee> employees)
+        {
+            foreach (var employee in employees)
+            {
+                AddMember(employee);
+            }
+        }
         public override string ToString()
         {
             return "Institute\n" + base.ToString() + "\n" + Head + "\nQuantity of employees:" + MemberList.Count;

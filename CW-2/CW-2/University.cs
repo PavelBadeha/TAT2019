@@ -49,6 +49,13 @@ namespace CW_2
             }
         }
 
+        public void AddDepartments(List<Department> departments)
+        {
+            foreach (var department in departments)
+            {
+                AddDepartment(department);
+            }
+        }
         /// <summary>
         /// Method that display info about departments.
         /// </summary>

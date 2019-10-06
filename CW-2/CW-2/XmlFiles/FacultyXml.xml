@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Faculty Name="RF">
+  <Address Address="Minsk,Kurwa,5"></Address>
+  <Dean Name="Maloy" Age="50" Office="602"></Dean>
+</Faculty>

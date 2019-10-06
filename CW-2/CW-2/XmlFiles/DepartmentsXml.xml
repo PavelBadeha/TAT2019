@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<University>
+  <Departments>
+    <Faculty Name="RF">
+      <Address Address="Minsk,Kurwa,5"></Address>
+      <Dean Name="Maloy" Age="50" Office="602"></Dean>
+      <Students>
+        <Student Name = "Pasha" Age = "19" Marks = "5,5,5,4,6" ></Student>
+        <Student Name = "Dima" Age = "19" Marks = "2,10,5,4,6" ></Student>
+        <Student Name = "Sanay" Age = "20" Marks = "5,5,5,4,6" ></Student>
+      </Students>
+    </Faculty>
+    <Institute Name="Noi">
+      <Address Address="Minsk,Kurwa,5"></Address>
+      <Head Name="Maloy" Age="50" CarNumber="602"></Head>
+    </Institute>
+    <Management Name="Hi">
+      <Address Address="Minsk,Kurwa,5"></Address>
+      <Head Name="Maloy" Age="50" CarNumber="602"></Head>
+    </Management>
+  </Departments>
+</University>

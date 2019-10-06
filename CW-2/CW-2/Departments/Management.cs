@@ -56,5 +56,13 @@ namespace CW_2
                 base.AddMember(person);
             }
         }
+
+        public void AddMembers(List<Accountant> accountants)
+        {
+            foreach (var accountant in accountants)
+            {
+                AddMember(accountant);
+            }
+        }
     }
 }

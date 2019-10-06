@@ -19,6 +19,10 @@ namespace CW_2
             Cars = cars;
         }
 
+        public void AddGarage(Garage garage)
+        {
+            Garages.Add(garage);
+        }
         public override string ToString()
         {
             return "Parking\n"+base.ToString() + " Quantity of garages:" + Garages.Count + " Quantity of cars:"+Cars.Count;
