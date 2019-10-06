@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 
 namespace CW_2
 {
@@ -57,6 +58,11 @@ namespace CW_2
             {
                 AddMember(employee);
             }
+        }
+        public void AddEmployeesFromXml(string fileName)
+        {
+            XmlParser xmlParser = new XmlParser(fileName);
+            AddMembers(xmlParser.GetListOfEmployeesFromXml(xmlParser.xRoot));
         }
         public override string ToString()
         {

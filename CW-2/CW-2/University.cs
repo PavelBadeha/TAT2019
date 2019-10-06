@@ -20,9 +20,11 @@ namespace CW_2
         /// </summary>
         public University() { }
 
-        public University(Parking parking)
+        public University(string fileName)
         {
-            AddParking(parking);
+            XmlParser  xmlParser = new XmlParser(fileName);
+            AddDepartments(xmlParser.GetDepartmentsFromXml());
+            AddParkings(xmlParser.GetParkingsFromXml());
         }
 
         #region Methods
@@ -86,6 +88,18 @@ namespace CW_2
                 Console.WriteLine();
             }
         }
+
+        public void AddDepartmentsFromXml(string fileName)
+        {
+            XmlParser xmlParser=new XmlParser(fileName);
+            AddDepartments(xmlParser.GetDepartmentsFromXml());
+        }
+
+        public void AddParkingsFromXml(string fileName)
+        {
+            XmlParser xmlParser = new XmlParser(fileName);
+            AddParkings(xmlParser.GetParkingsFromXml());
+        }   
         public override string ToString()
         {
             StringBuilder departments = new StringBuilder();
@@ -96,7 +110,5 @@ namespace CW_2
             return departments.ToString();
         }
         #endregion
-
-
     }
 }

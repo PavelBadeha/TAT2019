@@ -64,5 +64,11 @@ namespace CW_2
                 AddMember(accountant);
             }
         }
+
+        public void AddAccountantsFromXml(string fileName)
+        {
+            XmlParser xmlParser=new XmlParser(fileName);
+            AddMembers(xmlParser.GetListOfAccountantsFromXml(xmlParser.xRoot));
+        }
     }
 }
