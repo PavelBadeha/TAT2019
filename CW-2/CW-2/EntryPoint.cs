@@ -16,9 +16,7 @@ namespace CW_2
             XmlParser xmlParser = new XmlParser("XmlFiles/DepartmentsXml.xml");
             Faculty faculty = new Faculty("RF", "Minsk", "Kurchatova", "8");
            // faculty.AddMembers(xmlParser.GetListOfStudents(xmlParser.xRoot));
-           University university = new University();
-           university.AddDepartments(xmlParser.GetDepartments());
-           university.AddParkings(xmlParser.GetParkings());
+           University university = xmlParser.GetUniversityFromXml();
            university.DisplayDepartments();
            //Person head = new Head("Ighor Kheidorov",50,7777);
            //Person dean = new Dean("Maloy",50,602);
