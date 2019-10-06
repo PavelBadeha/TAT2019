@@ -18,8 +18,8 @@ namespace CW_2
            // faculty.AddMembers(xmlParser.GetListOfStudents(xmlParser.xRoot));
            University university = new University();
            university.AddDepartments(xmlParser.GetDepartments());
+           university.AddParkings(xmlParser.GetParkings());
            university.DisplayDepartments();
-           Console.WriteLine(xmlParser.xRoot["Name"].Name);
            //Person head = new Head("Ighor Kheidorov",50,7777);
            //Person dean = new Dean("Maloy",50,602);
            //Person head2 = new Head("Korol",45,9999);

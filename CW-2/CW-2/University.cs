@@ -14,7 +14,7 @@ namespace CW_2
         /// </summary>
         public List<Department> Departments { get; } = new List<Department>();
 
-        public Parking Parking { get; }=new Parking();
+        public List<Parking> Parkings { get; }=new List<Parking>();
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
@@ -22,7 +22,7 @@ namespace CW_2
 
         public University(Parking parking)
         {
-            Parking = parking;
+            AddParking(parking);
         }
 
         #region Methods
@@ -56,6 +56,19 @@ namespace CW_2
                 AddDepartment(department);
             }
         }
+
+        public void AddParking(Parking parking)
+        {
+            Parkings.Add(parking);
+        }
+
+        public void AddParkings(List<Parking> parkings)
+        {
+            foreach (var parking in parkings)
+            {
+                AddParking(parking);
+            }
+        }
         /// <summary>
         /// Method that display info about departments.
         /// </summary>
@@ -65,6 +78,12 @@ namespace CW_2
             {
                Console.WriteLine(department.ToString());
                Console.WriteLine();
+            }
+
+            foreach (var parking in Parkings)
+            {
+                Console.WriteLine(parking);
+                Console.WriteLine();
             }
         }
         public override string ToString()

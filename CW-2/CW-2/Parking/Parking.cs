@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace CW_2
 {
@@ -12,20 +13,36 @@ namespace CW_2
 
         public Parking() { }
 
-        public Parking(Head head, List<Garage> garages, List<Car> cars,Address address):base(address)
+        public Parking(string name, Head head, Address address) : base(name, address)
         {
             Head = head;
-            Garages = garages;
-            Cars = cars;
+        }
+        public Parking(string name,Head head, List<Garage> garages, List<Car> cars,Address address):base(name,address)
+        {
+            Head = head;
+            foreach (var garage in garages)
+            {
+                AddGarage(garage);
+            }
+
+            foreach (var car in cars)
+            {
+                AddCar(car);
+            }
         }
 
+        public void AddCar(Car car)
+        {
+            Cars.Add(car);
+        }
         public void AddGarage(Garage garage)
         {
             Garages.Add(garage);
         }
+
         public override string ToString()
         {
-            return "Parking\n"+base.ToString() + " Quantity of garages:" + Garages.Count + " Quantity of cars:"+Cars.Count;
+            return "Parking " +base.ToString() + "\n"+ Head + "\n" +"Quantity of garages:" + Garages.Count + " Quantity of cars:"+Cars.Count;
         }
     }
 }

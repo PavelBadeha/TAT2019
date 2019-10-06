@@ -19,4 +19,21 @@
       <Head Name="Maloy" Age="50" CarNumber="602"></Head>
     </Management>
   </Departments>
+  <Parkings>
+    <Parking Name ="34">
+      <Head Name="Zyabl" Age="54" CarNumber="666"></Head>
+      <Garages>
+        <Garage QuantityOfSlots="20"></Garage>
+      </Garages>
+      <Cars>
+        <Car Number="999" Brand="Nexsia"></Car>
+        <Car Number="256" Brand="Opel"></Car>
+      </Cars>
+      <Address Address="Saratov,Shlyapik,9"></Address>
+    </Parking>
+    <Parking Name="45">
+      <Head Name="Syhach" Age="30" CarNumber="999"></Head>
+      <Address Address="Saratove,Shlyapik,10"></Address>
+    </Parking>
+  </Parkings>
 </University>

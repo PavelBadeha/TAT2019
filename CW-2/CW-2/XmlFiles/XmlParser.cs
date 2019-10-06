@@ -12,7 +12,17 @@ namespace CW_2
 
         private XmlDocument xDocument = new XmlDocument();
         public XmlElement xRoot;
+
         private XmlNode departmentsXmlNode;
+            //studentsXmlNode,
+            //employeesXmlNode,
+            //accountantsXmlNode,
+            //deanXmlNode,
+            //headXmlNode,
+            //adddressXmlNode,
+            //facultyXmlNode,
+            //insituteXmlNode,
+            //managementXmlNode;
         public XmlParser(string nameOfXmlFile)
         {
             xDocument.Load(nameOfXmlFile);
@@ -44,10 +54,10 @@ namespace CW_2
             }
             return employees;
         }
-        public List<Accountant> GetListOfAccountants(XmlNode accountantXmlNode)
+        public List<Accountant> GetListOfAccountants(XmlNode accountantsXmlNode)
         {
             List<Accountant> accountants = new List<Accountant>();
-            foreach (XmlNode accountantNode in accountantXmlNode)
+            foreach (XmlNode accountantNode in accountantsXmlNode)
             {
                 accountants.Add(new Accountant(accountantNode.Attributes["Name"].Value
                     , Int32.Parse(accountantNode.Attributes["Age"].Value)
@@ -126,6 +136,60 @@ namespace CW_2
                 }
             }
             return departments;
+        }
+
+        public List<Car> GetCars(XmlNode carsXmlNode)
+        {
+            List<Car> cars = new List<Car>();
+            foreach (XmlNode carNode in carsXmlNode)
+            {
+                cars.Add(new Car(Int32.Parse(carNode.Attributes["Number"].Value),carNode.Attributes["Brand"].Value));
+            }
+
+            return cars;
+        }
+
+        public List<Garage> GetGarages(XmlNode garagesXmlNode)
+        {
+            List<Garage> garages = new List<Garage>();
+            foreach (XmlNode garageNode in garagesXmlNode)
+            {
+                garages.Add(new Garage(Int32.Parse(garageNode.Attributes["QuantityOfSlots"].Value)));
+            }
+
+            return garages;
+        }
+        public Parking GetParking(XmlNode parkingXmlNode)
+        {
+            Parking parking = new Parking(parkingXmlNode.Attributes["Name"].Value,GetHead(parkingXmlNode["Head"])
+                                          ,GeAddress(addressXmlNode:parkingXmlNode["Address"]));
+            if (parkingXmlNode["Garages"] != null)
+            {
+                foreach (var garage in GetGarages(parkingXmlNode["Garages"]))
+                {
+                    parking.AddGarage(garage);
+                }
+            }
+
+            if (parkingXmlNode["Cars"] != null)
+            {
+                foreach (var car in GetCars(parkingXmlNode["Cars"]))
+                {
+                    parking.AddCar(car);
+                }
+
+            }
+            return parking;
+        }
+        public List<Parking> GetParkings()
+        {
+            List<Parking> parkings = new List<Parking>();
+            foreach (XmlNode parkingXmlNode in xRoot?["Parkings"])
+            {
+                parkings.Add(GetParking(parkingXmlNode));
+            }
+
+            return parkings;
         }
     }
 }
