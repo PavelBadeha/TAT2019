@@ -65,11 +65,6 @@ namespace CW_2
                 AddMember(student);
             }
         }
-        public void AddStudentsFromXml(string fileName)
-        {
-            XmlParser xmlParser= new XmlParser(fileName);
-            AddMembers(xmlParser.GetListOfStudentsFromXml(xmlParser.xRoot));
-        }
         public override string ToString()
         {
             return "Faculty\n" +base.ToString() + "\n" + Dean +"\nQuantity of student: "+MemberList.Count;

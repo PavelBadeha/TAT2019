@@ -40,22 +40,6 @@ namespace CW_2
             Garages.Add(garage);
         }
 
-        public void AddCarsFromXml(string fileName)
-        {
-            XmlParser xmlParser=new XmlParser(fileName);
-            foreach (var car in xmlParser.GetCarsFromXml(xmlParser.xRoot))
-            {
-                AddCar(car);
-            }
-        }
-        public void AddGaragesFromXml(string fileName)
-        {
-            XmlParser xmlParser = new XmlParser(fileName);
-            foreach (var garage in xmlParser.GetGaragesFromXml(xmlParser.xRoot))
-            {
-                AddGarage(garage);
-            }
-        }
         public override string ToString()
         {
             return "Parking " +base.ToString() + "\n"+ Head + "\n" +"Quantity of garages:" + Garages.Count + " Quantity of cars:"+Cars.Count;

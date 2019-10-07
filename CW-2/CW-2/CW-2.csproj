@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="UniversityCreator.cs" />
+    <Compile Include="IDBProvider.cs" />
     <Compile Include="Parking\Car.cs" />
     <Compile Include="Parking\Parking.cs" />
     <Compile Include="Parking\Garage.cs" />
@@ -60,7 +62,7 @@
     <Compile Include="Departments\Faculty.cs" />
     <Compile Include="Persons\Student.cs" />
     <Compile Include="University.cs" />
-    <Compile Include="XmlFiles\XmlParser.cs" />
+    <Compile Include="XmlFiles\XmlProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -59,11 +59,6 @@ namespace CW_2
                 AddMember(employee);
             }
         }
-        public void AddEmployeesFromXml(string fileName)
-        {
-            XmlParser xmlParser = new XmlParser(fileName);
-            AddMembers(xmlParser.GetListOfEmployeesFromXml(xmlParser.xRoot));
-        }
         public override string ToString()
         {
             return "Institute\n" + base.ToString() + "\n" + Head + "\nQuantity of employees:" + MemberList.Count;

@@ -12,13 +12,11 @@ namespace CW_2
         /// </summary>
         static void Main()
         {
-            University university = new University("XmlFiles/DepartmentsXml.xml");
-            Faculty faculty = new Faculty("RF", "Minsk", "Kurchatova", "8");
-           XmlParser xmlParser = new XmlParser("XmlFiles/RfFaculty.xml");
-           Faculty rfFaculty = xmlParser.GetFacultyFromXml(xmlParser.xRoot);
-            //university.DisplayDepartments();
-            faculty.AddStudentsFromXml("XmlFiles/StudentsForRF.xml");
-            Console.WriteLine(rfFaculty);
+            XmlProvider xmlProvider=new XmlProvider("XmlFiles/DepartmentsXml.xml");
+            UniversityCreator creator = new UniversityCreator();
+            University university = creator.GetUniversity(xmlProvider);
+            university.DisplayDepartments();
         }
     }
 }
+                                                                                                                                                                       

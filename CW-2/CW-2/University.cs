@@ -20,13 +20,6 @@ namespace CW_2
         /// </summary>
         public University() { }
 
-        public University(string fileName)
-        {
-            XmlParser  xmlParser = new XmlParser(fileName);
-            AddDepartments(xmlParser.GetDepartmentsFromXml());
-            AddParkings(xmlParser.GetParkingsFromXml());
-        }
-
         #region Methods
 
         /// <summary>
@@ -91,14 +84,14 @@ namespace CW_2
 
         public void AddDepartmentsFromXml(string fileName)
         {
-            XmlParser xmlParser=new XmlParser(fileName);
-            AddDepartments(xmlParser.GetDepartmentsFromXml());
+            XmlProvider XmlProvider=new XmlProvider(fileName);
+            AddDepartments(XmlProvider.GetDepartments());
         }
 
         public void AddParkingsFromXml(string fileName)
         {
-            XmlParser xmlParser = new XmlParser(fileName);
-            AddParkings(xmlParser.GetParkingsFromXml());
+            XmlProvider XmlProvider = new XmlProvider(fileName);
+            AddParkings(XmlProvider.GetParkings());
         }   
         public override string ToString()
         {
