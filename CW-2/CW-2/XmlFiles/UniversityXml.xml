@@ -8,8 +8,15 @@
         <Student Name = "Pasha" Age = "19" Marks = "5,5,5,4,6" ></Student>
         <Student Name = "Dima" Age = "19" Marks = "2,10,5,4,6" ></Student>
         <Student Name = "Sanay" Age = "20" Marks = "5,5,5,4,6" ></Student>
-        <Student Name="Can" Age="21" Marks="2,2,2,2,2"></Student>
+        <Student Name="Yasno" Age="21" Marks="2,2,2,2,2"></Student>
         <Student Name = "Pasha" Age = "19" Marks = "5,5,5,4,6" ></Student>
+      </Students>
+    </Faculty>
+    <Faculty Name="RF2">
+      <Address Address="Minsk,Kurwa,1"></Address>
+      <Dean Name="Maloy" Age="50" Office="602"></Dean>
+      <Students>
+        <Student Name = "Pashak" Age = "19" Marks = "5,5,5,4,6" ></Student>
       </Students>
     </Faculty>
     <Institute Name="Noi">

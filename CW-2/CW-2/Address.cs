@@ -5,7 +5,7 @@ namespace CW_2
     /// <summary>
     ///Class of the address.
     /// </summary>
-    class Address
+     class Address
     {
         #region Properties
 
@@ -24,6 +24,7 @@ namespace CW_2
         /// </summary>
         public string HouseNumber { get;} = String.Empty;
 
+        public int DepartmentId { get; }
         #endregion
 
         #region Constructors
@@ -46,6 +47,13 @@ namespace CW_2
             HouseNumber = houseNumber;
         }
 
+        public Address(string[] address,int departmentId)
+        {
+            DepartmentId = departmentId;
+            City = address[0];
+            Street = address[1];
+            HouseNumber = address[2];
+        }
         public Address(string[] address)
         {
             City = address[0];

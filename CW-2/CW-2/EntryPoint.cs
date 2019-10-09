@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
@@ -12,10 +13,9 @@ namespace CW_2
         /// </summary>
         static void Main()
         {
-            XmlProvider xmlProvider=new XmlProvider("XmlFiles/DepartmentsXml.xml");
-            UniversityCreator creator = new UniversityCreator();
-            University university = creator.GetUniversity(xmlProvider);
-            university.DisplayDepartments();
+            XmlDBProvider provider = new XmlDBProvider();
+            UniversityCreator creator= new UniversityCreator(provider);
+            Console.WriteLine(creator.GetUniversityById(0));
         }
     }
 }

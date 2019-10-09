@@ -9,6 +9,8 @@ namespace CW_2
     /// </summary>
     class University
     {
+        public string Name { get; }
+        public  int UniversityId { get; }
         /// <summary>
         /// List property, list of the departments.
         /// </summary>
@@ -19,6 +21,12 @@ namespace CW_2
         /// Parameterless constructor.
         /// </summary>
         public University() { }
+
+        public University(string name, int universityId)
+        {
+            Name = name;
+            UniversityId = universityId;
+        }
 
         #region Methods
 
@@ -82,25 +90,19 @@ namespace CW_2
             }
         }
 
-        public void AddDepartmentsFromXml(string fileName)
-        {
-            XmlProvider XmlProvider=new XmlProvider(fileName);
-            AddDepartments(XmlProvider.GetDepartments());
-        }
-
-        public void AddParkingsFromXml(string fileName)
-        {
-            XmlProvider XmlProvider = new XmlProvider(fileName);
-            AddParkings(XmlProvider.GetParkings());
-        }   
         public override string ToString()
         {
-            StringBuilder departments = new StringBuilder();
+            StringBuilder departmentsStringBuilder = new StringBuilder();
+            StringBuilder parkingStringBuilder = new StringBuilder();
             foreach (var department in Departments)
             {
-                departments.Append(department + "\n");
+                departmentsStringBuilder.Append(department+"\n");
             }
-            return departments.ToString();
+            foreach (var parking in Parkings)
+            {
+                parkingStringBuilder.Append(parking+"\n");
+            }
+            return Name+"\n"+departmentsStringBuilder+parkingStringBuilder;
         }
         #endregion
     }

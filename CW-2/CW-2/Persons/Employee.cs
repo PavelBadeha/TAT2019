@@ -11,6 +11,12 @@ namespace CW_2
         public float Salary { get; set; } = 150;
 
         public Employee() { }
+
+        public Employee(string name, int age, float salary, int departmentId) : base(name, age, departmentId)
+        {
+            Salary = salary;
+        }
+
         public Employee(string name, int age, float salary) : base(name, age)
         {
             Salary = salary;

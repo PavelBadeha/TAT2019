@@ -12,6 +12,11 @@ namespace CW_2
         public int[] Marks { get; set; }= new int[5];
 
         public Student() { }
+
+        public Student(string name, int age, int[] marks, int departmentId) : base(name, age, departmentId)
+        {
+            marks.CopyTo(Marks,0);
+        }
         public  Student(string name,int age) : base(name, age) { }
 
         public Student(string name, int age, int[] marks) : base(name, age)

@@ -12,6 +12,10 @@ namespace CW_2
 
         public Accountant() { }
 
+        public Accountant(string name, int age,int hoursPerWeek, int departmentId) : base(name, age, departmentId)
+        {
+            HoursPerWeek = hoursPerWeek;
+        }
         public Accountant(string name, int age, int hoursPerWeek) : base(name, age)
         {
             HoursPerWeek = hoursPerWeek;

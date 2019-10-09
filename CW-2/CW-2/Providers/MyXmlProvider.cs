@@ -5,24 +5,13 @@ using System.Xml;
 
 namespace CW_2
 {
-    class XmlProvider:IDBProvider
+    class MyXmlProvider
     {
-
         private XmlDocument xDocument = new XmlDocument();
         public XmlElement xRoot;
 
         private XmlNode departmentsXmlNode;
-
-        //studentsXmlNode,
-        //employeesXmlNode,
-        //accountantsXmlNode,
-        //deanXmlNode,
-        //headXmlNode,
-        //adddressXmlNode,
-        //facultyXmlNode,
-        //insituteXmlNode,
-        //managementXmlNode;
-        public XmlProvider(string nameOfXmlFile)
+        public MyXmlProvider(string nameOfXmlFile)
         {
             xDocument.Load(nameOfXmlFile);
             xRoot = xDocument.DocumentElement;
