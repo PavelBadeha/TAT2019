@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CW_2
 {
@@ -15,6 +11,8 @@ namespace CW_2
         List<Car> GetCars();
         List<Garage> GetGarages();
         List<Parking> GetParkings();
-        List<University> GetUniversities();
+        List<DBOUniversity> GetDBOUniversities();
+        List<Department> GetDepartmentsById(int id);
+        List<Parking> GetParkingsById(int id);
     }
 }

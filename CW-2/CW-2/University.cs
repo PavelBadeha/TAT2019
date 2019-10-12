@@ -27,6 +27,10 @@ namespace CW_2
             Name = name;
             UniversityId = universityId;
         }
+        public University(string name)
+        {
+            Name = name;
+        }
 
         #region Methods
 

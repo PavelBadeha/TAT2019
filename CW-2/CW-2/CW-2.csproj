@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="DBobjects\DBOAccountant.cs" />
+    <Compile Include="DBobjects\DBOAddress.cs" />
+    <Compile Include="DBobjects\DBOCar.cs" />
+    <Compile Include="DBobjects\DBODean.cs" />
+    <Compile Include="DBobjects\DBOEmployee.cs" />
+    <Compile Include="DBobjects\DBOFaculty.cs" />
+    <Compile Include="DBobjects\DBOGarage.cs" />
+    <Compile Include="DBobjects\DBOHead.cs" />
+    <Compile Include="DBobjects\DBOInstitute.cs" />
+    <Compile Include="DBobjects\DBOManagement.cs" />
+    <Compile Include="DBobjects\DBOParking.cs" />
+    <Compile Include="DBobjects\DBOStudent.cs" />
+    <Compile Include="DBobjects\DBOUniversity.cs" />
     <Compile Include="Providers\JsonProvider.cs" />
     <Compile Include="UniversityCreator.cs" />
     <Compile Include="Providers\IDBProvider.cs" />

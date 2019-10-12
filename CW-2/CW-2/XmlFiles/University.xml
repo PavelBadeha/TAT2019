@@ -4,7 +4,10 @@
     <University Name="BSU" UniversityId="0"></University>
   </Universities>
   <Departments>
-    <Faculty Name="Rf" UniversityId="0" DepartmentId="0"></Faculty>
+    <Faculty Name="Rf" UniversityId="0" DepartmentId="0">
+      <Faculty Name="Rf" UniversityId="0" DepartmentId="0">
+      </Faculty>
+    </Faculty>
     <Management Name="Noi" UniversityId="0" DepartmentId="1"></Management>
   </Departments>
   <Deans>
@@ -13,6 +16,7 @@
   <Heads>
     <Head Name="Syha4" Age="19" CarNumber="10" DepartmentId="1"></Head>
     <Head Name="Zyabl" Age="30" CarNumber="20" DepartmentId="2"></Head> 
+   <Head Name="Ai" Age="30" CarNumber="21" DepartmentId="3"></Head> 
   </Heads>
   <Students>
     <Student Name="Pasha" Age="19" Marks="4,5,5,1,5" DepartmentId="0"></Student>
@@ -35,5 +39,6 @@
     <Address Address="Minsk,Kurchatova,8" DepartmentId="0"></Address>
     <Address Address="Minsk,Kurchatova,7" DepartmentId="1"></Address>
     <Address Address="Minsk,Kurchatova,6" DepartmentId="2"></Address>
+   <Address Address="Minsk,Kurchatova,1" DepartmentId="3"></Address>
   </Addresses>
 </root>
