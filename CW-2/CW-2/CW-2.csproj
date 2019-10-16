@@ -61,6 +61,7 @@
     <Compile Include="DBobjects\DBOStudent.cs" />
     <Compile Include="DBobjects\DBOUniversity.cs" />
     <Compile Include="Providers\JsonProvider.cs" />
+    <Compile Include="StudentComparer.cs" />
     <Compile Include="UniversityCreator.cs" />
     <Compile Include="Providers\IDBProvider.cs" />
     <Compile Include="Parking\Car.cs" />
@@ -94,6 +95,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="JsonFiles\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,15 +14,6 @@ namespace CW_2
         public  Head Head { get; }=new Head();
 
         #region Constructors
-
-        public Institute(string name,Head head,Address address, int departmentId, int universityId)
-        {
-            Name = name;
-            Head = head;
-            Address = address;  
-            DepartmentId = departmentId;
-            UniversityId = universityId;
-        }
         /// <summary>
         /// Parameterless constructor.
         /// </summary>

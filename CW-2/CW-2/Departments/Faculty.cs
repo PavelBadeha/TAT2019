@@ -11,15 +11,6 @@ namespace CW_2
         public  Dean Dean { get;  }=new Dean();
 
         #region Constructors
-
-        public Faculty(string name, Dean dean,Address address,int departmentId,int universityId)
-        {
-            Name = name;
-            Dean = dean;
-            Address = address;
-            DepartmentId = departmentId;
-            UniversityId = universityId;
-        }
         /// <summary>
         /// Parameterless constructor.
         /// </summary>

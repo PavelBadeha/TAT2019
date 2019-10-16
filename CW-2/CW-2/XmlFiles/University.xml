@@ -20,7 +20,8 @@
   </Heads>
   <Students>
     <Student Name="Pasha" Age="19" Marks="4,5,5,1,5" DepartmentId="0"></Student>
-    <Student Name="Misha" Age="19" Marks="4,5,5,1,5" DepartmentId="0"></Student>
+    <Student Name="Misha" Age="19" Marks="4,5,5,1,0" DepartmentId="0"></Student>
+    <Student Name="Dima" Age="19" Marks="4,5,5,1,10" DepartmentId="0"></Student>
   </Students>
   <Employees>
     <Employee Name="Jma" Age="54" Salary ="200" DepartmentId="1"></Employee>

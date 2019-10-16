@@ -2,6 +2,9 @@
 using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using System.IO;
+using System.Collections.Generic;
+
 
 namespace CW_2
 {
@@ -19,11 +22,13 @@ namespace CW_2
             provider.Initialization();
             UniversityCreator creator= new UniversityCreator(provider);
             creator.CreateUniversities();
-           foreach(var univer in creator.GetUniversities())
-            {
-                Console.WriteLine(univer);
-            }
 
+            List<Student> students = provider.GetStudents();
+            students.Sort(new StudentComparer());
+            foreach(var student in students)
+            {
+                Console.WriteLine(student);   
+            }
         }
     }
 }

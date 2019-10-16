@@ -224,13 +224,9 @@ namespace CW_2
         public List<Department> GetDepartmentsById(int id)
         {
             List<Department> temp = new List<Department>();
-            foreach(var department in GetDepartments())
-            {
-                if(department.UniversityId==id)
-                {
-                    temp.Add(department);
-                }
-            }
+            temp.AddRange(GetFacultiesById(id));
+            temp.AddRange(GetInstiutesyById(id));
+            temp.AddRange(GetManagementsById(id));
             return temp;
         }
         public List<Parking> GetParkingsById(int id)

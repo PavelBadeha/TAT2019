@@ -11,11 +11,6 @@ namespace CW_2
         public int CarNumber { get; set; }
 
         public Head() { }
-
-        public Head(string name, int age, int carNumber, int departmentId) : base(name, age, departmentId)
-        {
-            CarNumber = carNumber;
-        }
         public Head(string name, int age,int carNumber) : base(name, age)
         {
             CarNumber = carNumber;

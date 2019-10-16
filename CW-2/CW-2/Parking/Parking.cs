@@ -13,14 +13,6 @@ namespace CW_2
 
         public Parking() { }
 
-        public Parking(string name,Head head,Address address, int departmentId, int universityId)
-        {
-            Name = name;
-            Head = head;
-            Address = address;
-            DepartmentId = departmentId;
-            UniversityId = universityId;
-        }
         public Parking(string name, Head head, Address address) : base(name, address)
         {
             Head = head;

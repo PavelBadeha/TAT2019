@@ -9,7 +9,6 @@ namespace CW_2
     abstract class Department
     {
         #region Properties
-        public int UniversityId { get; set; }
         public int MaxSizeOfMemberList { get; protected set; } =10;
         public List<Person> MemberList { get; }=new List<Person>();
 
@@ -22,18 +21,9 @@ namespace CW_2
         /// Address property.
         /// </summary>
         public Address Address { get; set; }
-
-        public int DepartmentId { get; set; }
         #endregion
 
         #region Constructors
-
-        public Department(string name, int departmentId,int universityId)
-        {
-            Name = name;
-            DepartmentId = departmentId;
-            UniversityId = universityId;
-        }
         /// <summary>
         /// Parameterless constructor.
         /// </summary>

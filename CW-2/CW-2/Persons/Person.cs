@@ -4,7 +4,6 @@ namespace CW_2
 {
     class Person
     {
-        public  int DepartmentId { get; }
         public string Name { get; }=String.Empty;
         public int Age { get; }
 
@@ -18,13 +17,6 @@ namespace CW_2
             {
                 Age = age;
             }
-        }
-
-        public Person(string name, int age, int departmentId)
-        {
-            Name = name;
-            Age = age;
-            DepartmentId = departmentId;
         }
         public override bool Equals(object obj)
         {

@@ -7,22 +7,17 @@ using System.Threading.Tasks;
 
 namespace CW_2
 {
-    class Student:Person
+    class Student:Person,IComparable
     {
         public int[] Marks { get; set; }= new int[5];
 
         public Student() { }
 
-        public Student(string name, int age, int[] marks, int departmentId) : base(name, age, departmentId)
-        {
-            marks.CopyTo(Marks,0);
-        }
-        public  Student(string name,int age) : base(name, age) { }
-
         public Student(string name, int age, int[] marks) : base(name, age)
         {
             marks.CopyTo(Marks,0);
         }
+        public  Student(string name,int age) : base(name, age) { }
 
         public override string ToString()
         {
@@ -35,6 +30,15 @@ namespace CW_2
             marks[marks.Length-1] = '.';
 
             return "Student\n" + base.ToString() +" Marks:" + marks;
+        }
+        public int CompareTo(object student)
+        {
+            Student buff = new Student(); 
+            if(student is Student)
+            {
+                buff = (Student)student;
+            }
+            return Marks.Average().CompareTo(buff.Marks.Average());
         }
     }
 }

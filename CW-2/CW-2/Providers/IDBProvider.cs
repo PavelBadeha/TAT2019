@@ -4,6 +4,7 @@ namespace CW_2
 {
     interface IDBProvider
     {
+        
         List<Student> GetStudents();
         List<Employee> GetEmployees();
         List<Accountant> GetAccountants();

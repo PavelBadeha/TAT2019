@@ -11,14 +11,6 @@ namespace CW_2
 
         #region Constructors
 
-        public Management(string name,Head head,Address address, int departmentId, int universityId)
-        {
-            Name = name;
-            Head = head;
-            Address = address;
-            DepartmentId = departmentId;
-            UniversityId = universityId;
-        }
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
