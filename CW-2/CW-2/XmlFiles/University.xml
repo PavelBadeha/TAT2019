@@ -24,8 +24,11 @@
     <Student Name="Dima" Age="19" Marks="4,5,5,1,10" DepartmentId="0"></Student>
   </Students>
   <Employees>
-    <Employee Name="Jma" Age="54" Salary ="200" DepartmentId="1"></Employee>
+   
   </Employees>
+  <Accountants>
+    <Accountant Name="Jma" Age="54" HoursPerWeek ="200" DepartmentId="1"></Accountant>
+  </Accountants>
   <Parkings>
     <Parking Name="34" DepartmentId="2" UniversityId="0"></Parking>
     <Parking Name="1" DepartmentId="3" UniversityId="0"></Parking>

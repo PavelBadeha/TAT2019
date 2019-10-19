@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace CW_2
 {
-    class Person
+    [Serializable]
+    public class Person
     {
         public string Name { get; }=String.Empty;
         public int Age { get; }

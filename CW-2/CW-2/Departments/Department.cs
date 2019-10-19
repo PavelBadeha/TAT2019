@@ -36,6 +36,7 @@ namespace CW_2
         {
             Address = address;
         }
+
         /// <summary>
         /// Class constructor .
         /// </summary>

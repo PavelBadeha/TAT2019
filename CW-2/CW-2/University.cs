@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CW_2
-{
+{ 
     /// <summary>
     /// Class of university.
     /// </summary>
     class University
     {
-        public string Name { get; }
+        public string Name { get; set; }
         public  int UniversityId { get; }
         /// <summary>
         /// List property, list of the departments.

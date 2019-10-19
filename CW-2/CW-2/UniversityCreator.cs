@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CW_2
 {
@@ -43,7 +41,7 @@ namespace CW_2
         }
         public Dean GetDeanById(int id)
         {
-            return provider.GetDBODeans().Select(x => new Dean(x.Name, x.Age, x.Office)).Single();
+            return provider.GetDBODeans().Where(x=>x.FacultyId==id).Select(x => new Dean(x.Name, x.Age, x.Office)).Single();
         }
         public List<Student> GetStudentsById(int id)
         {
@@ -107,7 +105,8 @@ namespace CW_2
         }
         public List<Parking> GetParkingsById(int id)
         {
-            return provider.GetDBOParkings().Where(x=>x.ParkingId==id).Select(x => new Parking(x.Name, GetHeadById(x.ParkingId), GetGaragesById(x.ParkingId)
+            return provider.GetDBOParkings().Where(x=>x.UniversityId==id)
+                                            .Select(x => new Parking(x.Name, GetHeadById(x.ParkingId), GetGaragesById(x.ParkingId)
                                             , GetCarsById(x.ParkingId), GetAddressById(x.ParkingId)))
                                             .ToList();
         }

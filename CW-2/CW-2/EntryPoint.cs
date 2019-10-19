@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Xml;
+using System.Xml.Serialization;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using System.IO;
@@ -21,12 +21,12 @@ namespace CW_2
         {
             XmlDBProvider provider = new XmlDBProvider();
             provider.Initialization();
-            UniversityCreator creator= new UniversityCreator(provider);
+            UniversityCreator creator = new UniversityCreator(provider);
             creator.CreateUniversities();
-            foreach(var un in creator.GetUniversities())
+            foreach (var un in creator.GetUniversities())
             {
                Console.WriteLine(un);
-            }           
+            }
         }
     }
 }

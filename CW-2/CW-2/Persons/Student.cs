@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace CW_2
 {
-    class Student:Person,IComparable
+    [Serializable]
+    public class Student:Person,IComparable
     {
         public int[] Marks { get; set; }= new int[5];
 
