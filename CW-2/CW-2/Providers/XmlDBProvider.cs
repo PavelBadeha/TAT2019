@@ -10,7 +10,6 @@ namespace CW_2
         private  const string FileName = "XmlFiles/University.xml";
 
         private List<DBOUniversity> dBOUniversities = new List<DBOUniversity>();
-        private List<Department> departments =  new List<Department>();
         private List<DBOParking> dBOParkings = new List<DBOParking>();
         private List<DBODean> dBODeans = new List<DBODean>();
         private List<DBOHead> dBOHeads = new List<DBOHead>();
@@ -23,9 +22,12 @@ namespace CW_2
         private List<DBOFaculty> dBOFaculties = new List<DBOFaculty>();
         private List<DBOInstitute> dBOInstitutes = new List<DBOInstitute>();
         private List<DBOManagement> dBOManagements = new List<DBOManagement>();
+
+        private XmlReader reader;
+     
         public void Initialization()
         {
-            XmlReader reader = XmlReader.Create(FileName);
+            reader = XmlReader.Create(FileName);
             while(reader.Read())
             {
                 if (reader.IsStartElement())
@@ -91,254 +93,61 @@ namespace CW_2
                 }
             }
         }
-        public List<Department> GetDepartments()
-        {
-            departments.AddRange(GetInstiutes());
-            departments.AddRange(GetManagements());
-            departments.AddRange(GetFaculties());
-            return departments;
-        }
 
-        #region Search by Id
-        public Address GetAddressById(int id)
+        #region Return DBO
+        public List<DBOParking> GetDBOParkings()
         {
-            DBOAddress temp = dBOAddresses.Find(x => x.HouseId == id);
-            return new Address(temp.City, temp.Street, temp.HouseNumber);
+            return dBOParkings;
         }
-        public Head GetHeadById(int id)
-        {          
-            DBOHead temp = dBOHeads.Find(x => x.InstituteId == id);
-            return new Head(temp.Name, temp.Age, temp.CarNumber);
-        }
-        public Dean GetDeanById(int id)
+        public List<DBODean> GetDBODeans()
         {
-            DBODean temp = dBODeans.Find(x => x.FacultyId == id);
-            return new Dean(temp.Name, temp.Age, temp.Office);
+            return dBODeans;
         }
-        public List<Student> GetStudentsById(int id)
+        public List<DBOHead> GetDBOHeads()
         {
-            List<Student> students = new List<Student>();
-            foreach (var dbo in dBOStudents)
-            {
-                if (dbo.FacultyId == id)
-                {
-                    students.Add(new Student(dbo.Name, dbo.Age, dbo.Marks));
-                }
-            }
-            return students;
+            return dBOHeads;
         }
-        public List<Employee> GetEmployeesById(int id)
+        public List<DBOStudent> GetDBOStudents()
         {
-            List<Employee> employees = new List<Employee>();
-            foreach (var dbo in dBOEmployees)
-            {
-                if (dbo.InstituteId == id)
-                {
-                    employees.Add(new Employee(dbo.Name, dbo.Age, dbo.Salary));
-                }
-            }
-            return employees;
+            return dBOStudents;
         }
-        public List<Accountant> GetAccountantsById(int id)
+        public List<DBOEmployee> GetDBOEmployees()
         {
-            List<Accountant> accountants = new List<Accountant>();
-            foreach (var dbo in dBOAccountants)
-            {
-                if (dbo.ManagementId == id)
-                {
-                    accountants.Add(new Accountant(dbo.Name, dbo.Age, dbo.HoursPerWeek));
-                }
-            }
-            return accountants;
+            return dBOEmployees;
         }
-        public List<Car> GetCarsById(int id)
+        public List<DBOAccountant> GetDBOAccountants()
         {
-            List<Car> cars = new List<Car>();
-            foreach (var dbo in dBOCars)
-            {
-                if (dbo.ParkingId == id)
-                {
-                    cars.Add(new Car(dbo.Number, dbo.Brand));
-                }
-            }
-            return cars;
+            return dBOAccountants;
         }
-        public List<Garage> GetGaragesById(int id)
+        public List<DBOAddress> GetDBOAddresses()
         {
-            List<Garage> garages = new List<Garage>();
-            foreach (var dbo in dBOGarages)
-            {
-                if (dbo.ParkingId == id)
-                {
-                    garages.Add(new Garage(dbo.QuantityOfSlots));
-                }
-            }
-            return garages;
+            return dBOAddresses;
         }
-        public List<Institute> GetInstiutesyById(int id)
+        public List<DBOCar> GetDBOCars()
         {
-            List<Institute> institutes = new List<Institute>();
-            Institute temp;
-            foreach (var dbo in dBOInstitutes)
-            {
-                if(dbo.InstituteId==id)
-                {
-                    temp = new Institute(dbo.Name, GetAddressById(dbo.InstituteId), GetHeadById(dbo.InstituteId));
-                    temp.AddMembers(GetEmployeesById(dbo.InstituteId));
-                    institutes.Add(temp);
-                }       
-            }
-            return institutes;
+            return dBOCars;
         }
-        public List<Faculty> GetFacultiesById(int id)
+        public List<DBOGarage> GetDBOGarages()
         {
-            List<Faculty> faculties = new List<Faculty>();
-            Faculty temp;
-            foreach (var dbo in dBOFaculties)
-            {
-                if(dbo.FacultyId==id)
-                {
-                    temp = new Faculty(dbo.Name, GetAddressById(dbo.FacultyId), GetDeanById(dbo.FacultyId));
-                    temp.AddMembers(GetStudentsById(dbo.FacultyId));
-                    faculties.Add(temp);
-                }
-             
-            }
-            return faculties;
+            return dBOGarages;
         }
-        public List<Management> GetManagementsById(int id)
+        public List<DBOFaculty> GetDBOFaculties()
         {
-            List<Management> managements = new List<Management>();
-            Management temp;
-            foreach (var dbo in dBOManagements)
-            {
-                if(dbo.ManagementId==id)
-                {
-                    temp = new Management(dbo.Name, GetAddressById(dbo.ManagementId), GetHeadById(dbo.ManagementId));
-                    temp.AddMembers(GetAccountantsById(dbo.ManagementId));
-                    managements.Add(temp);
-                }
-            }
-            return managements;
+            return dBOFaculties;
         }
-        public List<Department> GetDepartmentsById(int id)
+        public List<DBOInstitute> GetDBOInstitutes()
         {
-            List<Department> temp = new List<Department>();
-            temp.AddRange(GetFacultiesById(id));
-            temp.AddRange(GetInstiutesyById(id));
-            temp.AddRange(GetManagementsById(id));
-            return temp;
+            return dBOInstitutes;
         }
-        public List<Parking> GetParkingsById(int id)
+        public List<DBOManagement> GetDBOManagements()
         {
-            List<Parking> parkings = new List<Parking>();
-            foreach (var dbo in dBOParkings)
-            {
-                if(dbo.UniversityId==id)
-                {
-                    parkings.Add(new Parking(dbo.Name, GetHeadById(dbo.ParkingId), GetAddressById(dbo.ParkingId)));
-                }         
-            }
-            return parkings;
+            return dBOManagements;
         }
-        #endregion
-
-        #region Return all list
-        public List<Parking> GetParkings()
-        {
-            List<Parking> parkings = new List<Parking>();
-            foreach (var dbo in dBOParkings)
-            {
-                parkings.Add(new Parking(dbo.Name, GetHeadById(dbo.ParkingId), GetAddressById(dbo.ParkingId)));
-            }
-            return parkings;
-        }
-        public List<Student> GetStudents()
-        {
-            List<Student> students = new List<Student>();
-            foreach(var dbo in dBOStudents)
-            {
-                students.Add(new Student(dbo.Name, dbo.Age, dbo.Marks));
-            }
-            return students;
-        }
-        public List<Employee> GetEmployees()
-        {
-            List<Employee> employees = new List<Employee>();
-            foreach (var dbo in dBOEmployees)
-            {
-                employees.Add(new Employee(dbo.Name, dbo.Age, dbo.Salary));
-            }
-            return employees;
-        }
-        public List<Accountant> GetAccountants()
-        {
-            List<Accountant> accountants = new List<Accountant>();
-            foreach (var dbo in dBOAccountants)
-            {
-                accountants.Add(new Accountant(dbo.Name, dbo.Age, dbo.HoursPerWeek));
-            }
-            return accountants;
-        }
-        public List<Car> GetCars()
-        {
-            List<Car> cars = new List<Car>();
-            foreach (var dbo in dBOCars)
-            {
-                cars.Add(new Car(dbo.Number,dbo.Brand));
-            }
-            return cars;
-        }
-        public List<Garage> GetGarages()
-        {
-            List<Garage> garages = new List<Garage>();
-            foreach (var dbo in dBOGarages)
-            {
-                garages.Add(new Garage(dbo.QuantityOfSlots));
-            }
-            return garages;
-        }
-        public List<Faculty> GetFaculties()
-        {
-            List<Faculty> faculties = new List<Faculty>();
-            Faculty temp;
-            foreach (var dbo in dBOFaculties)
-            {
-                temp = new Faculty(dbo.Name,GetAddressById(dbo.FacultyId),GetDeanById(dbo.FacultyId));
-                temp.AddMembers(GetStudentsById(dbo.FacultyId));
-                faculties.Add(temp);
-            }
-            return faculties;
-        }
-        public List<Institute> GetInstiutes()
-        {
-            List<Institute> institutes = new List<Institute>();
-            Institute temp;
-            foreach (var dbo in dBOInstitutes)
-            {
-                temp = new Institute(dbo.Name, GetAddressById(dbo.InstituteId), GetHeadById(dbo.InstituteId));
-                temp.AddMembers(GetEmployeesById(dbo.InstituteId));
-                institutes.Add(temp);
-            }
-            return institutes;
-        }
-        public List<Management> GetManagements()
-        {
-            List<Management> managements = new List<Management>();
-            Management temp;
-            foreach (var dbo in dBOManagements)
-            {
-                temp = new Management(dbo.Name, GetAddressById(dbo.ManagementId), GetHeadById(dbo.ManagementId));
-                temp.AddMembers(GetAccountantsById(dbo.ManagementId));
-                managements.Add(temp);
-            }
-            return managements;
-        }
-        #endregion
-
         public List<DBOUniversity> GetDBOUniversities()
         {
             return dBOUniversities;
         }
+        #endregion
+
     }
 }

@@ -36,9 +36,10 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Institute(string name, Address address) : base(name, address) { }
 
-        public Institute(string name, Address address, Head head) : base(name, address)
+        public Institute(string name, Address address, Head head,List<Employee> employees) : base(name, address)
         {
             Head = head;
+            AddMembers(employees);
         }
 
         #endregion

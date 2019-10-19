@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CW_2
 {
-    class StudentComparer:IComparer<Student>
+    class StudentComparerByName:IComparer<Student>
     {
         public int Compare(Student x,Student y)
         {

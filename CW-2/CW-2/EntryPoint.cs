@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
@@ -22,13 +23,10 @@ namespace CW_2
             provider.Initialization();
             UniversityCreator creator= new UniversityCreator(provider);
             creator.CreateUniversities();
-
-            List<Student> students = provider.GetStudents();
-            students.Sort(new StudentComparer());
-            foreach(var student in students)
+            foreach(var un in creator.GetUniversities())
             {
-                Console.WriteLine(student);   
-            }
+               Console.WriteLine(un);
+            }           
         }
     }
 }

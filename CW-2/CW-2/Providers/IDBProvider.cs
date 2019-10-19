@@ -5,15 +5,19 @@ namespace CW_2
     interface IDBProvider
     {
         
-        List<Student> GetStudents();
-        List<Employee> GetEmployees();
-        List<Accountant> GetAccountants();
-        List<Department> GetDepartments();
-        List<Car> GetCars();
-        List<Garage> GetGarages();
-        List<Parking> GetParkings();
+        List<DBOStudent> GetDBOStudents();
+        List<DBOEmployee> GetDBOEmployees();
+        List<DBOAccountant> GetDBOAccountants();
+        List<DBOHead> GetDBOHeads();
+        List<DBODean> GetDBODeans();
+        List<DBOFaculty> GetDBOFaculties();
+        List<DBOInstitute> GetDBOInstitutes();
+        List<DBOManagement> GetDBOManagements();
+        List<DBOCar> GetDBOCars();
+        List<DBOAddress> GetDBOAddresses();
+        List<DBOGarage> GetDBOGarages();
+        List<DBOParking> GetDBOParkings();
         List<DBOUniversity> GetDBOUniversities();
-        List<Department> GetDepartmentsById(int id);
-        List<Parking> GetParkingsById(int id);
+    
     }
 }

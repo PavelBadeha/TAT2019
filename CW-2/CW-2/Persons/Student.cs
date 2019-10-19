@@ -32,13 +32,8 @@ namespace CW_2
             return "Student\n" + base.ToString() +" Marks:" + marks;
         }
         public int CompareTo(object student)
-        {
-            Student buff = new Student(); 
-            if(student is Student)
-            {
-                buff = (Student)student;
-            }
-            return Marks.Average().CompareTo(buff.Marks.Average());
+        {  
+            return Marks.Average().CompareTo((student as Student).Marks.Average());
         }
     }
 }

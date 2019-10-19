@@ -80,7 +80,6 @@
     <Compile Include="Departments\Faculty.cs" />
     <Compile Include="Persons\Student.cs" />
     <Compile Include="University.cs" />
-    <Compile Include="Providers\MyXmlProvider.cs" />
     <Compile Include="Providers\XmlDBProvider.cs" />
   </ItemGroup>
   <ItemGroup>

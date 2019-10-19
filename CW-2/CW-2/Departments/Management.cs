@@ -33,15 +33,12 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Management(string name, Address address) : base(name, address) { }
 
-        public Management(string name, Address address, Head head) : base(name, address)
+        public Management(string name, Address address, Head head,List<Accountant> accountants) : base(name, address)
         {
             Head = head;
+            AddMembers(accountants);
         }
 
-        public Management(string name, Address address, List<Accountant> accountants) : base(name, address)
-        {
-            MemberList.AddRange(accountants);
-        }
         #endregion
 
         public override string ToString()
