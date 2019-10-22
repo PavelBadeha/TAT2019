@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
-    [Serializable]
     public class Person
     {
-        public string Name { get; }=String.Empty;
-        public int Age { get; }
+        [JsonProperty]
+        public string Name { get; private set; } =String.Empty;
+
+        [JsonProperty]
+        public int Age { get; private set; }
 
         public Person() { }
 

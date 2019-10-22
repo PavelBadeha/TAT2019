@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
@@ -11,7 +8,8 @@ namespace CW_2
     /// </summary>
     class Institute :Department
     {
-        public  Head Head { get; }=new Head();
+        [JsonProperty]
+        public  Head Head { get; private set; } =new Head();
 
         #region Constructors
         /// <summary>

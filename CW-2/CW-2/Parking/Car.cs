@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
     class Car
-    { 
-        public int Number { get; }
-        public string Brand { get; } = String.Empty;
+    {
+        [JsonProperty]
+        public int Number { get; private set; }
+
+        [JsonProperty]
+        public string Brand { get; private set; } = String.Empty;
         public Car() { }
         public Car(int number,string brand)
         {

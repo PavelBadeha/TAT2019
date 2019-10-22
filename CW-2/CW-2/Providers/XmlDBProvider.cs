@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Xml;
 using System.Xml.Linq;
+using System;
 
 namespace CW_2
 {
     class XmlDBProvider:IDBProvider
     {
-        private static string fileName = "XmlFiles/University.xml";
+        private const string fileName = "XmlFiles/University.xml";
 
         private List<DBOUniversity> dBOUniversities = new List<DBOUniversity>();
         private List<DBOParking> dBOParkings = new List<DBOParking>();
@@ -25,18 +24,27 @@ namespace CW_2
         private List<DBOInstitute> dBOInstitutes = new List<DBOInstitute>();
         private List<DBOManagement> dBOManagements = new List<DBOManagement>();
 
+        private List<University> universities = new List<University>();
+        //private List<University> universities = new List<University>();
+        //private List<Parking> parkings = new List<Parking>();
+        //private List<Dean> deans = new List<Dean>();
+        //private List<Head> heads = new List<Head>();
+        //private List<Student> students = new List<Student>();
+        //private List<Employee> employees = new List<Employee>();
+        //private List<Accountant> accountants = new List<Accountant>();
+        //private List<Car> cars = new List<Car>();
+        //private List<Garage> garages = new List<Garage>();
+        //private List<DBOAddress> Addresses = new List<Address>();
+        //private List<DBOFaculty> dBOFaculties = new List<DBOFaculty>();
+        //private List<DBOInstitute> dBOInstitutes = new List<DBOInstitute>();
+        //private List<DBOManagement> dBOManagements = new List<DBOManagement>();
+
         private XDocument document;
         public XmlDBProvider()
         {
             document = XDocument.Load(fileName);
         }
-        public XmlDBProvider(string fileName)
-        {
-            XmlDBProvider.fileName = fileName;
-            document = XDocument.Load(fileName);
-        }
-      
-
+   
         #region Methods of Inititialization
         private void InitializeDBODeans()
         {
@@ -118,7 +126,13 @@ namespace CW_2
             dBOUniversities = document.Descendants("University").Select(x => new DBOUniversity(x.Attribute("Name").Value
                                                                          , int.Parse(x.Attribute("UniversityId").Value))).ToList();
         }
-        public void Initialization()    
+        private void InitializeUniversities()
+        {
+            universities = dBOUniversities.Select(university => new University(university.Name
+                                                              , GetDepartmentsById(university.UniversityId)
+                                                              , GetParkingsById(university.UniversityId))).ToList();
+        }
+        public void Initialize()
         {
             InitializeDBOAccountants();
             InitializeDBOAddress();
@@ -133,7 +147,9 @@ namespace CW_2
             InitializeDBOParkings();
             InitializeDBOStudents();
             InitializeDBOUniversities();
+            InitializeUniversities();
         }
+       
         #endregion
 
         #region Return DBO
@@ -188,6 +204,235 @@ namespace CW_2
         public List<DBOUniversity> GetDBOUniversities()
         {
             return dBOUniversities;
+        }
+        #endregion
+
+        #region Search by Id
+        public Address GetAddressById(int id)
+        {
+            return GetDBOAddresses().Where(x => x.HouseId == id).Select(x => new Address(x.City, x.Street, x.HouseNumber)).Single();
+        }
+        public Head GetHeadById(int id)
+        {
+            return GetDBOHeads().Where(x => x.InstituteId == id).Select(x => new Head(x.Name, x.Age, x.CarNumber)).Single();
+        }
+        public Dean GetDeanById(int id)
+        {
+            return GetDBODeans().Where(x => x.FacultyId == id).Select(x => new Dean(x.Name, x.Age, x.Office)).Single();
+        }
+        public List<Student> GetStudentsById(int id)
+        {
+            return GetDBOStudents().Where(x => x.FacultyId == id)
+                                            .Select(x => new Student(x.Name, x.Age, x.Marks))
+                                            .ToList();
+        }
+        public List<Employee> GetEmployeesById(int id)
+        {
+            return GetDBOEmployees().Where(x => x.InstituteId == id)
+                                             .Select(x => new Employee(x.Name, x.Age, x.Salary))
+                                             .ToList();
+        }
+        public List<Accountant> GetAccountantsById(int id)
+        {
+            return GetDBOAccountants().Where(x => x.ManagementId == id)
+                                             .Select(x => new Accountant(x.Name, x.Age, x.HoursPerWeek))
+                                             .ToList();
+        }
+        public List<Car> GetCarsById(int id)
+        {
+            return GetDBOCars().Where(x => x.ParkingId == id)
+                                                .Select(x => new Car(x.Number, x.Brand))
+                                                .ToList();
+        }
+        public List<Garage> GetGaragesById(int id)
+        {
+            return GetDBOGarages().Where(x => x.ParkingId == id).Select(x => new Garage(x.QuantityOfSlots)).ToList();
+        }
+        public List<Institute> GetInstiutesyById(int id)
+        {
+            return GetDBOInstitutes().Where(x => x.UniversityId == id)
+                           .Select(x => new Institute(x.Name, GetAddressById(x.InstituteId)
+                           , GetHeadById(x.InstituteId)
+                           , GetEmployeesById(x.InstituteId)))
+                           .ToList();
+        }
+        public List<Faculty> GetFacultiesById(int id)
+        {
+            return GetDBOFaculties().Where(x => x.UniversityId == id)
+                           .Select(x => new Faculty(x.Name, GetAddressById(x.FacultyId)
+                           , GetDeanById(x.FacultyId)
+                           , GetStudentsById(x.FacultyId)))
+                           .ToList();
+        }
+        public List<Management> GetManagementsById(int id)
+        {
+            return GetDBOManagements().Where(x => x.UniversityId == id)
+                           .Select(x => new Management(x.Name, GetAddressById(x.ManagementId)
+                           , GetHeadById(x.ManagementId)
+                           , GetAccountantsById(x.ManagementId)))
+                           .ToList();
+        }
+        public List<Department> GetDepartmentsById(int id)
+        {
+            List<Department> temp = new List<Department>();
+            temp.AddRange(GetFacultiesById(id));
+            temp.AddRange(GetInstiutesyById(id));
+            temp.AddRange(GetManagementsById(id));
+            return temp;
+        }
+        public List<Parking> GetParkingsById(int id)
+        {
+            return GetDBOParkings().Where(x => x.UniversityId == id)
+                                            .Select(x => new Parking(x.Name, GetHeadById(x.ParkingId), GetGaragesById(x.ParkingId)
+                                            , GetCarsById(x.ParkingId), GetAddressById(x.ParkingId)))
+                                            .ToList();
+        }
+        #endregion
+
+        #region Return all list
+        public List<Department> GetDepartments()
+        {
+            List<Department> departments = new List<Department>();
+            departments.AddRange(GetFaculties());
+            departments.AddRange(GetInstiutes());
+            departments.AddRange(GetManagements());
+            return departments;
+        }
+        public List<Address> GetAddresses()
+        {
+            return GetDBOAddresses().Select(x => new Address(x.City, x.Street, x.HouseNumber)).ToList();
+        }
+        public List<Dean> GetDeans()
+        {
+            return GetDBODeans().Select(x => new Dean(x.Name, x.Age, x.Office)).ToList();
+        }
+        public List<Head> GetHeads()
+        {
+            return GetDBOHeads().Select(x => new Head(x.Name, x.Age, x.CarNumber)).ToList();
+        }
+        public List<Parking> GetParkings()
+        {
+            return GetDBOParkings().Select(x => new Parking(x.Name, GetHeadById(x.ParkingId), GetGaragesById(x.ParkingId)
+                                            , GetCarsById(x.ParkingId), GetAddressById(x.ParkingId)))
+                                            .ToList();
+        }
+        public List<Student> GetStudents()
+        {
+            return GetDBOStudents().Select(x => new Student(x.Name, x.Age, x.Marks)).ToList();
+        }
+        public List<Employee> GetEmployees()
+        {
+            return GetDBOEmployees().Select(x => new Employee(x.Name, x.Age, x.Salary)).ToList();
+        }
+        public List<Accountant> GetAccountants()
+        {
+            return GetDBOAccountants().Select(x => new Accountant(x.Name, x.Age, x.HoursPerWeek)).ToList();
+        }
+        public List<Car> GetCars()
+        {
+            return GetDBOCars().Select(x => new Car(x.Number, x.Brand)).ToList();
+        }
+        public List<Garage> GetGarages()
+        {
+            return GetDBOGarages().Select(x => new Garage(x.QuantityOfSlots)).ToList();
+        }
+        public List<Faculty> GetFaculties()
+        {
+            return GetDBOFaculties()
+                           .Select(x => new Faculty(x.Name, GetAddressById(x.FacultyId)
+                           , GetDeanById(x.FacultyId)
+                           , GetStudentsById(x.FacultyId)))
+                           .ToList();
+        }
+        public List<Institute> GetInstiutes()
+        {
+            return GetDBOInstitutes()
+                          .Select(x => new Institute(x.Name, GetAddressById(x.InstituteId)
+                          , GetHeadById(x.InstituteId)
+                          , GetEmployeesById(x.InstituteId)))
+                          .ToList();
+        }
+        public List<Management> GetManagements()
+        {
+            return GetDBOManagements()
+                          .Select(x => new Management(x.Name, GetAddressById(x.ManagementId)
+                          , GetHeadById(x.ManagementId)
+                          , GetAccountantsById(x.ManagementId)))
+                          .ToList();
+        }
+        public List<University> GetUniversities()
+        {
+            return universities;
+        }
+        #endregion
+
+        #region Retunr list by name
+        public Dean GetDeanByFacultyName(string facultyName)
+        {
+            Department faculty = universities.Select(university => university.Departments)
+                               .Select(departments => departments.Find(department => department.Name == facultyName))
+                               .Single();
+            return (faculty as Faculty).Dean;
+        }
+        public Head GetHeadByDepartmentName(string departmentName)
+        {
+            Department department = universities.Select(university => university.Departments)
+                               .Select(departments => departments.Find(dep => dep.Name == departmentName))
+                               .Single();
+            if(department is Parking)
+            {
+                return (department as Parking).Head;
+            }
+            if(department is Institute)
+            {
+                return (department as Institute).Head;
+            }
+            else
+            {
+                return (department as Management).Head;
+            }
+        }
+        public Address GetAddressByDepartmentName(string departmentName)
+        {
+            Department department = universities.Select(university => university.Departments)
+                               .Select(departments => departments.Find(dep => dep.Name == departmentName))
+                               .Single();
+            return department.Address;
+        }
+        public List<Student> GetStudentsByFacultyName(string departmentName)
+        {
+            int id = dBOFaculties.Find(x => x.Name == departmentName).FacultyId;
+            return GetStudentsById(id);
+        }
+        public List<Employee> GetEmployeesByInstituteName(string departmentName)
+        {
+            int id = dBOInstitutes.Find(x => x.Name == departmentName).InstituteId;
+            return GetEmployeesById(id);
+        }
+        public List<Accountant> GetAccountantsByManagementName(string departmentName)
+        {
+            int id = dBOManagements.Find(x => x.Name == departmentName).ManagementId;
+            return GetAccountantsById(id);
+        }
+        public List<Car> GetCarsByParkingName(string departmentName)
+        {
+            int id = dBOParkings.Find(x => x.Name == departmentName).ParkingId;
+            return GetCarsById(id);
+        }
+        public List<Garage> GetGaragesByParkingName(string departmentName)
+        {
+            int id = dBOParkings.Find(x => x.Name == departmentName).ParkingId;
+            return GetGaragesById(id);
+        }
+        public List<Department> GetDepartmentsByUniversityName(string universityName)
+        {
+            return universities.Where(university => university.Name.Equals(universityName))
+                               .SelectMany(university => university.Departments).ToList();
+        }
+        public List<Parking> GetParkingsByUniversityName(string universityName)
+        {
+            return universities.Where(university => university.Name.Equals(universityName))
+                               .SelectMany(university => university.Parkings).ToList();
         }
         #endregion
 

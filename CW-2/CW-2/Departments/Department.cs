@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
     /// <summary>
     ///Class of the department.
     /// </summary>
-    abstract class Department
+    class Department
     {
         #region Properties
+        [JsonProperty]
         public int MaxSizeOfMemberList { get; protected set; } =10;
-        public List<Person> MemberList { get; }=new List<Person>();
+        [JsonProperty]
+        public List<Person> MemberList { get; private set; } =new List<Person>();
+
 
         /// <summary>
         /// String property, name of the department.
         /// </summary>
-        public string Name { get; set; } = String.Empty;
+        [JsonProperty]
+        public string Name { get; private set; } = String.Empty;
 
         /// <summary>
         /// Address property.
         /// </summary>
-        public Address Address { get; set; }
+        [JsonProperty]
+        public Address Address { get; private set; }
         #endregion
 
         #region Constructors
@@ -92,6 +98,8 @@ namespace CW_2
                    this.Name.Equals(tempDepartment.Name);
         }
 
+        public  delegate void AddedMember(string depName,string member);
+        public  event AddedMember EventAddedMember;
         public virtual void AddMember(Person person)
         {
             bool check = true;
@@ -108,7 +116,10 @@ namespace CW_2
             {
                 MemberList.Add(person);
             }
+
+            EventAddedMember?.Invoke(Name,person.ToString());          
         }
+
         #endregion
     }
 }

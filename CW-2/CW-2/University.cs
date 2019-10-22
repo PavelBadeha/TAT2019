@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace CW_2
 { 
@@ -9,30 +10,39 @@ namespace CW_2
     /// </summary>
     class University
     {
-        public string Name { get; set; }
-        public  int UniversityId { get; }
+        [JsonProperty]
+        public string Name { get;private set; }
+
         /// <summary>
         /// List property, list of the departments.
         /// </summary>
-        public List<Department> Departments { get; } = new List<Department>();
+        [JsonProperty]
+        public List<Department> Departments { get; private set; } = new List<Department>();
 
-        public List<Parking> Parkings { get; }=new List<Parking>();
+        [JsonProperty]
+        public List<Parking> Parkings { get; private set; } =new List<Parking>();
+
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
-        public University() { }
+        public University(){ }
 
-        public University(string name, int universityId)
-        {
-            Name = name;
-            UniversityId = universityId;
-        }
         public University(string name)
         {
-            Name = name;
+            Name = name;           
         }
-
+        public University(string name,List<Department> departments,List<Parking> parkings)
+        {
+            Name = name;
+            Departments = departments;
+            Parkings = parkings;
+        }
         #region Methods
+
+        private void AddedNewMember(string depName,string member)
+        {
+            Console.WriteLine($"{Name}:\n{depName} added new member\n{member} ");
+        }
 
         /// <summary>
         /// Method that add department to the list of departments.
@@ -49,11 +59,11 @@ namespace CW_2
                     break;
                 }
             }
-
             if (!check)
             {
                 Departments.Add(department);
             }
+            department.EventAddedMember += AddedNewMember;
         }
 
         public void AddDepartments(List<Department> departments)
@@ -83,8 +93,8 @@ namespace CW_2
         {
             foreach (var department in Departments)
             {
-               Console.WriteLine(department.ToString());
-               Console.WriteLine();
+                Console.WriteLine(department.ToString());
+                Console.WriteLine();
             }
 
             foreach (var parking in Parkings)
@@ -93,20 +103,19 @@ namespace CW_2
                 Console.WriteLine();
             }
         }
-
         public override string ToString()
         {
             StringBuilder departmentsStringBuilder = new StringBuilder();
             StringBuilder parkingStringBuilder = new StringBuilder();
             foreach (var department in Departments)
             {
-                departmentsStringBuilder.Append(department+"\n");
+                departmentsStringBuilder.Append(department + "\n");
             }
             foreach (var parking in Parkings)
             {
-                parkingStringBuilder.Append(parking+"\n");
+                parkingStringBuilder.Append(parking + "\n");
             }
-            return Name+"\n"+departmentsStringBuilder+parkingStringBuilder;
+            return Name + "\n" + departmentsStringBuilder + parkingStringBuilder;
         }
         #endregion
     }

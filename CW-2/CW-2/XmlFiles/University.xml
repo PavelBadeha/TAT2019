@@ -4,10 +4,7 @@
     <University Name="BSU" UniversityId="0"></University>
   </Universities>
   <Departments>
-    <Faculty Name="Rf" UniversityId="0" DepartmentId="0">
-      <Faculty Name="Rf" UniversityId="0" DepartmentId="0">
-      </Faculty>
-    </Faculty>
+    <Faculty Name="Rf" UniversityId="0" DepartmentId="0"></Faculty>
     <Management Name="Noi" UniversityId="0" DepartmentId="1"></Management>
   </Departments>
   <Deans>

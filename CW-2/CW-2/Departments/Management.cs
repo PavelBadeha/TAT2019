@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using Newtonsoft.Json;
 namespace CW_2
 {
     /// <summary>
@@ -7,7 +7,8 @@ namespace CW_2
     /// </summary>
     class Management :Department
     {
-        public Head Head { get; }= new Head();
+        [JsonProperty]
+        public Head Head { get; private set; } = new Head();
 
         #region Constructors
 

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace CW_2
 {
     class Garage
     {
-        public int QuantityOfSlots { get; }
+        [JsonProperty]
+        public int QuantityOfSlots { get; private set; }
 
-        public Garage() { }
+        public Garage() { } 
 
         public Garage(int quantityOfSlots)
         {

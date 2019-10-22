@@ -1,1 +1,123 @@
-[]
+[
+  {
+    "Name": "BSU",
+    "Departments": [
+      {
+        "Dean": {
+          "Office": 601,
+          "Name": "Maloy",
+          "Age": 63
+        },
+        "Students": [],
+        "MaxSizeOfMemberList": 20,
+        "MemberList": [
+          {
+            "Marks": [
+              4,
+              5,
+              5,
+              1,
+              5
+            ],
+            "Name": "Pasha",
+            "Age": 19
+          },
+          {
+            "Marks": [
+              4,
+              5,
+              5,
+              1,
+              0
+            ],
+            "Name": "Misha",
+            "Age": 19
+          },
+          {
+            "Marks": [
+              4,
+              5,
+              5,
+              1,
+              10
+            ],
+            "Name": "Dima",
+            "Age": 19
+          }
+        ],
+        "Name": "Rf",
+        "Address": {
+          "City": "Minsk",
+          "Street": "Kurchatova",
+          "HouseNumber": "8"
+        }
+      },
+      {
+        "Head": {
+          "CarNumber": 10,
+          "Name": "Syha4",
+          "Age": 19
+        },
+        "MaxSizeOfMemberList": 10,
+        "MemberList": [
+          {
+            "HoursPerWeek": 200,
+            "Name": "Jma",
+            "Age": 54
+          }
+        ],
+        "Name": "Noi",
+        "Address": {
+          "City": "Minsk",
+          "Street": "Kurchatova",
+          "HouseNumber": "7"
+        }
+      }
+    ],
+    "Parkings": [
+      {
+        "Head": {
+          "CarNumber": 20,
+          "Name": "Zyabl",
+          "Age": 30
+        },
+        "Garages": [
+          {
+            "QuantityOfSlots": 1
+          }
+        ],
+        "Cars": [
+          {
+            "Number": 200,
+            "Brand": "Opel"
+          }
+        ],
+        "MaxSizeOfMemberList": 10,
+        "MemberList": [],
+        "Name": "34",
+        "Address": {
+          "City": "Minsk",
+          "Street": "Kurchatova",
+          "HouseNumber": "6"
+        }
+      },
+      {
+        "Head": {
+          "CarNumber": 21,
+          "Name": "Ai",
+          "Age": 30
+        },
+        "Garages": [],
+        "Cars": [],
+        "MaxSizeOfMemberList": 10,
+        "MemberList": [],
+        "Name": "1",
+        "Address": {
+          "City": "Minsk",
+          "Street": "Kurchatova",
+          "HouseNumber": "1"
+        }
+      }
+    ]
+  }
+]

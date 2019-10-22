@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
-    [Serializable]
     public class Student:Person,IComparable
     {
-        public int[] Marks { get; set; }= new int[5];
+        [JsonProperty]
+        public int[] Marks { get; private set; } = new int[5];
 
         public Student() { }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
@@ -12,19 +13,20 @@ namespace CW_2
         /// <summary>
         /// String property, name of the city.
         /// </summary>
-        public string City { get; } = String.Empty;
+        [JsonProperty]
+        public string City { get; private set; } = String.Empty;
 
         /// <summary>
         /// String property, name of the street.
         /// </summary>
-        public string Street { get;  } = String.Empty;
+        [JsonProperty]
+        public string Street { get; private set; } = String.Empty;
 
         /// <summary>
         /// String property, The house number.
         /// </summary>
-        public string HouseNumber { get;} = String.Empty;
-
-        public int DepartmentId { get; }
+        [JsonProperty]
+        public string HouseNumber { get; private set; } = String.Empty;
         #endregion
 
         #region Constructors
@@ -45,14 +47,6 @@ namespace CW_2
             Street = street;
             City = city;
             HouseNumber = houseNumber;
-        }
-
-        public Address(string[] address,int departmentId)
-        {
-            DepartmentId = departmentId;
-            City = address[0];
-            Street = address[1];
-            HouseNumber = address[2];
         }
         public Address(string[] address)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
@@ -8,9 +8,11 @@ namespace CW_2
     /// </summary>
     class Faculty:Department
     {
-        public  Dean Dean { get;  }=new Dean();
+        [JsonProperty]
+        public  Dean Dean { get; private set; } =new Dean();
 
-        #region Constructors
+        public List<Student> Students { get; private set; } = new List<Student>();
+        #region Constructor
         /// <summary>
         /// Parameterless constructor.
         /// </summary>
@@ -48,6 +50,7 @@ namespace CW_2
         }
         #endregion
 
+      
         public override void AddMember(Person person)
         {
             MaxSizeOfMemberList = 20;
@@ -55,6 +58,7 @@ namespace CW_2
             {
                 base.AddMember(person);
             }
+         
         }
 
         public void AddMembers(List<Student> students)

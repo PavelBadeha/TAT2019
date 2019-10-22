@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Net.NetworkInformation;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
     class Parking:Department
     {
-        public Head Head { get;}=new Head();
+        [JsonProperty]
+        public Head Head { get; private set; } =new Head();
 
-        public List<Garage> Garages { get; }= new List<Garage>();
+        [JsonProperty]
+        public List<Garage> Garages { get; private set; } = new List<Garage>();
 
-        public List<Car> Cars { get; } = new List<Car>();
+        [JsonProperty]
+        public List<Car> Cars { get; private set; } = new List<Car>();
 
         public Parking() { }
 

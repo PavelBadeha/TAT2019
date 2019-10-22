@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CW_2
 {
     class Dean:Person
     {
-        public int Office { get; set; }
+        [JsonProperty]
+        public int Office { get; private set; }
 
         public Dean() { }
         public Dean(string name, int age, int office) : base(name, age)
