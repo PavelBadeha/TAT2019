@@ -25,19 +25,6 @@ namespace CW_2
         private List<DBOManagement> dBOManagements = new List<DBOManagement>();
 
         private List<University> universities = new List<University>();
-        //private List<University> universities = new List<University>();
-        //private List<Parking> parkings = new List<Parking>();
-        //private List<Dean> deans = new List<Dean>();
-        //private List<Head> heads = new List<Head>();
-        //private List<Student> students = new List<Student>();
-        //private List<Employee> employees = new List<Employee>();
-        //private List<Accountant> accountants = new List<Accountant>();
-        //private List<Car> cars = new List<Car>();
-        //private List<Garage> garages = new List<Garage>();
-        //private List<DBOAddress> Addresses = new List<Address>();
-        //private List<DBOFaculty> dBOFaculties = new List<DBOFaculty>();
-        //private List<DBOInstitute> dBOInstitutes = new List<DBOInstitute>();
-        //private List<DBOManagement> dBOManagements = new List<DBOManagement>();
 
         private XDocument document;
         public XmlDBProvider()
@@ -366,7 +353,7 @@ namespace CW_2
         }
         #endregion
 
-        #region Retunr list by name
+        #region Return list by name
         public Dean GetDeanByFacultyName(string facultyName)
         {
             Department faculty = universities.Select(university => university.Departments)

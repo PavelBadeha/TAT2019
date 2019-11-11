@@ -6,7 +6,7 @@ namespace CW_2
     /// <summary>
     ///Class of the address.
     /// </summary>
-     class Address
+    class Address
     {
         #region Properties
 
@@ -48,6 +48,11 @@ namespace CW_2
             City = city;
             HouseNumber = houseNumber;
         }
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="address">String array that contains address</param>
         public Address(string[] address)
         {
             City = address[0];

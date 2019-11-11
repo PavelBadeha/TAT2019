@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CW_2
+﻿namespace CW_2
 {
+    /// <summary>
+    /// Class of employee data base object
+    /// </summary>
     class DBOEmployee
     {
         public string Name { get; }
         public int Age { get; }
         public int Salary{ get; }
+
+        /// <summary>
+        /// Id of the institute that has this employee
+        /// </summary>
         public int InstituteId { get; }
         public DBOEmployee(string name, int age, int salary, int insituteId)
         {

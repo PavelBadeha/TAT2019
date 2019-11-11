@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+
 namespace CW_2
 {
     /// <summary>
@@ -7,6 +8,9 @@ namespace CW_2
     /// </summary>
     class Management :Department
     {
+        /// <summary>
+        /// Head of management
+        /// </summary>
         [JsonProperty]
         public Head Head { get; private set; } = new Head();
 
@@ -34,6 +38,13 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Management(string name, Address address) : base(name, address) { }
 
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="name">Name of management</param>
+        /// <param name="address">Address of management</param>
+        /// <param name="head">Head of management</param>
+        /// <param name="accountants">Management contains this list of accountants</param>
         public Management(string name, Address address, Head head,List<Accountant> accountants) : base(name, address)
         {
             Head = head;
@@ -42,11 +53,20 @@ namespace CW_2
 
         #endregion
 
+        #region Methods
+        /// <summary>
+        /// Method that overrides method "ToString()".
+        /// </summary>
+        /// <returns>String representation of the management.</returns>
         public override string ToString()
         {
             return "Management\n" + base.ToString() + "\n" + Head + "\nQuantity of accountants:" + MemberList.Count;
         }
 
+        /// <summary>
+        /// Override method AddMember(Person person)
+        /// </summary>
+        /// <param name="person">Personn which needed to add</param>
         public override void AddMember(Person person)
         {
             if (person is Accountant)
@@ -55,6 +75,11 @@ namespace CW_2
             }
         }
 
+
+        /// <summary>
+        /// Method that can add list of accountants to member list
+        /// </summary>
+        /// <param name="accountants">List of accountants which needed to add</param>
         public void AddMembers(List<Accountant> accountants)
         {
             foreach (var accountant in accountants)
@@ -62,5 +87,6 @@ namespace CW_2
                 AddMember(accountant);
             }
         }
+        #endregion
     }
 }

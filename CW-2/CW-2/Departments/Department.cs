@@ -5,16 +5,23 @@ using Newtonsoft.Json;
 namespace CW_2
 {
     /// <summary>
-    ///Class of the department.
+    /// Abstract class of the department.
     /// </summary>
-    class Department
+    abstract class Department
     {
         #region Properties
+
+        /// <summary>
+        /// Max size of member list
+        /// </summary>
         [JsonProperty]
         public int MaxSizeOfMemberList { get; protected set; } =10;
+
+        /// <summary>
+        /// List of department members
+        /// </summary>
         [JsonProperty]
         public List<Person> MemberList { get; private set; } =new List<Person>();
-
 
         /// <summary>
         /// String property, name of the department.
@@ -36,11 +43,6 @@ namespace CW_2
         public Department()
         {
             Address= new Address();
-        }
-
-        public Department(Address address)
-        {
-            Address = address;
         }
 
         /// <summary>
@@ -98,8 +100,22 @@ namespace CW_2
                    this.Name.Equals(tempDepartment.Name);
         }
 
+        /// <summary>
+        /// Delegate of added member
+        /// </summary>
+        /// <param name="depName">Name of department</param>
+        /// <param name="member">Name of member</param>
         public  delegate void AddedMember(string depName,string member);
+
+        /// <summary>
+        /// Event of added member
+        /// </summary>
         public  event AddedMember EventAddedMember;
+
+        /// <summary>
+        /// Method that add member to department list
+        /// </summary>
+        /// <param name="person">Member which needed to add</param>
         public virtual void AddMember(Person person)
         {
             bool check = true;

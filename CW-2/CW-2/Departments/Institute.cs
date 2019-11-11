@@ -8,6 +8,9 @@ namespace CW_2
     /// </summary>
     class Institute :Department
     {
+        /// <summary>
+        /// Head of institute
+        /// </summary>
         [JsonProperty]
         public  Head Head { get; private set; } =new Head();
 
@@ -34,6 +37,13 @@ namespace CW_2
         /// <param name="address">Address.</param>
         public Institute(string name, Address address) : base(name, address) { }
 
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="name">Name of institute</param>
+        /// <param name="address">Address of institute</param>
+        /// <param name="head">Head of institute</param>
+        /// <param name="employees">Institute contains this list of employees</param>
         public Institute(string name, Address address, Head head,List<Employee> employees) : base(name, address)
         {
             Head = head;
@@ -42,6 +52,11 @@ namespace CW_2
 
         #endregion
 
+        #region Methods
+        /// <summary>
+        /// Override method AddMember(Person person)
+        /// </summary>
+        /// <param name="person">Person which needed to add</param>
         public override void AddMember(Person person)
         {
             if (person is Employee)
@@ -50,6 +65,10 @@ namespace CW_2
             }
         }
 
+        /// <summary>
+        /// Method that can add list of employees to member list
+        /// </summary>
+        /// <param name="employees">List of employees which needed to add</param>
         public void AddMembers(List<Employee> employees)
         {
             foreach (var employee in employees)
@@ -57,9 +76,15 @@ namespace CW_2
                 AddMember(employee);
             }
         }
+
+        /// <summary>
+        /// Method that overrides method "ToString()".
+        /// </summary>
+        /// <returns>String representation of the institute.</returns>
         public override string ToString()
         {
             return "Institute\n" + base.ToString() + "\n" + Head + "\nQuantity of employees:" + MemberList.Count;
         }
+        #endregion
     }
 }

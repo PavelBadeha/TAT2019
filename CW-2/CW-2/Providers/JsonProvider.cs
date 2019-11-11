@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
+
 namespace CW_2
 {
     class JsonProvider:IDBProvider
     {
         private static string fileName = @"A:\repos\CW-2\CW-2\JsonFiles\Univer.json";
-
-        private List<University> universities = new List<University>();
-        private List<Department> departments = new List<Department>();
-        private List<Parking> parkings = new List<Parking>();
-          
+        private List<University> universities = new List<University>();        
         private JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+
         public void Initialize()
         {
             universities = JsonConvert.DeserializeObject<List<University>>(File.ReadAllText(fileName), settings);
-            departments = universities.SelectMany(x => x.Departments).ToList();
-            parkings = universities.SelectMany(x => x.Parkings).ToList();
         }
         
         public List<University> GetUniversities()
@@ -105,6 +101,11 @@ namespace CW_2
         {
             universities.Add(university);
             File.WriteAllText(fileName, JsonConvert.SerializeObject(universities,settings));
+        }
+        public void AddUniversities(List<University> universities)
+        {
+            this.universities = universities;
+            File.WriteAllText(fileName, JsonConvert.SerializeObject(universities, settings));
         }
         #endregion
     }

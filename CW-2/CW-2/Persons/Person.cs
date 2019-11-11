@@ -1,14 +1,14 @@
-﻿using System;
-using System.Xml.Serialization;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CW_2
 {
-    public class Person
+    /// <summary>
+    /// Class of person
+    /// </summary>
+    abstract class Person
     {
         [JsonProperty]
-        public string Name { get; private set; } =String.Empty;
+        public string Name { get; private set; } = string.Empty;
 
         [JsonProperty]
         public int Age { get; private set; }

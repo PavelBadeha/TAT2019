@@ -15,6 +15,5 @@ namespace CW_2
         List<Garage> GetGaragesByParkingName(string departmentName);
         List<Department> GetDepartmentsByUniversityName(string universityName);
         List<Parking> GetParkingsByUniversityName(string universityName);
-
     }
 }

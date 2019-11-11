@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using System.IO;
-using System;
+﻿using System;
 
 namespace CW_2
 {
@@ -10,26 +7,24 @@ namespace CW_2
     /// </summary>
     class EntryPoint
     {
-
-        /// <summary>
+        /// summary>
         /// The entry point.
         /// </summary>
         static void Main()
         {
-            //string json = JsonConvert.SerializeObject(creator.Universities);
-            //
-
-            XmlDBProvider provider = new XmlDBProvider();
+            XmlDBProvider xmlProvider = new XmlDBProvider();
             JsonProvider jsonProvider = new JsonProvider();
-            provider.Initialize();
+            xmlProvider.Initialize();
             jsonProvider.Initialize();
 
-            UniversityCreator creator = new UniversityCreator(provider);
+            UniversityCreator creator = new UniversityCreator(xmlProvider);
             creator.CreateUniversities();
-                        
-            Console.WriteLine(provider.GetParkingsByUniversityName("BSU").Count);
-            Console.WriteLine(jsonProvider.GetParkingsByUniversityName("BSU").Count);
-        }
-    }
+            Console.WriteLine("XML\n" + creator.Universities[0]);
+
+            creator = new UniversityCreator(jsonProvider);
+            creator.CreateUniversities();
+            Console.WriteLine("JSON\n" + creator.Universities[0]);
+        }    
+    } 
 }
                                                                                                                                                                        

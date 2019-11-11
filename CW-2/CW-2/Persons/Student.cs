@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace CW_2
 {
-    public class Student:Person,IComparable
+    class Student:Person,IComparable
     {
         [JsonProperty]
         public int[] Marks { get; private set; } = new int[5];
