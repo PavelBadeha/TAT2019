@@ -3,14 +3,27 @@ using System.Collections.Generic;
 
 namespace Dev_1
 {
+    /// <summary>
+    /// Class of chess board
+    /// </summary>
     class ChessBoard
     {
+        /// <summary>
+        /// Dictionary of cell->color
+        /// </summary>
         private Dictionary<ChessCell, string> CellsColors = new Dictionary<ChessCell, string>();
        
+        /// <summary>
+        /// Class constructor without params
+        /// </summary>
         public ChessBoard()
         {
             ChessBoardInitialize();
         }
+
+        /// <summary>
+        /// Method of chess board initialization(initialize dictionay CellsColor)
+        /// </summary>
         private void ChessBoardInitialize()
         {
             ChessCell buffPoint;
@@ -30,14 +43,25 @@ namespace Dev_1
                 }
             }
         }
-        public string GetCellColor(ChessFigure cell)
+
+        /// <summary>
+        /// Method that return color of cell
+        /// </summary>
+        /// <param name="figure">Chess figure for which need to return color</param>
+        /// <returns></returns>
+        public string GetCellColor(ChessFigure figure)
         {
-            return CellsColors[cell.ChessBoardPoint];
+            return CellsColors[figure.ChessBoardPoint];
         }
 
-        public void DisplayOnWhatLineIsTwoFigures(ChessFigure figure1,ChessFigure figure2)
+        /// <summary>
+        /// Method shows which line two figures are on
+        /// </summary>
+        /// <param name="figure1">First figure</param>
+        /// <param name="figure2">Second figure</param>
+        public void DisplayWhichLineTwoFiguresAreOn(ChessFigure figure1,ChessFigure figure2)
         {
-            if(IsTwoFuguresOnOneDioganal(figure1,figure2))
+            if(IsTwoFuguresOnOneDiagonal(figure1,figure2))
             {
                 Console.WriteLine("On one dioganal");
             }
@@ -54,6 +78,13 @@ namespace Dev_1
                 Console.WriteLine("No one");
             }
         }
+
+        /// <summary>
+        /// Method shows whether the figures are on the same vertical
+        /// </summary>
+        /// <param name="figure1">First figure</param>
+        /// <param name="figure2">Second figure</param>
+        /// <returns></returns>
         public bool IsTwoFuguresOnOneVertical(ChessFigure figure1,ChessFigure figure2)
         {
             if(figure1.ChessBoardPoint.Column==figure2.ChessBoardPoint.Column)
@@ -65,6 +96,13 @@ namespace Dev_1
                 return false;
             }
         }
+
+        /// <summary>
+        /// Method shows whether the figures are on the same horizontal
+        /// </summary>
+        /// <param name="figure1">First figure</param>
+        /// <param name="figure2">Second figure</param>
+        /// <returns></returns>
         public bool IsTwoFuguresOnOneHorizontal(ChessFigure figure1, ChessFigure figure2)
         {
             if (figure1.ChessBoardPoint.Row == figure2.ChessBoardPoint.Row)
@@ -76,7 +114,14 @@ namespace Dev_1
                 return false;
             }
         }
-        public bool IsTwoFuguresOnOneDioganal(ChessFigure figure1, ChessFigure figure2)
+
+        /// <summary>
+        /// Method shows whether the figures are on the same diagonal
+        /// </summary>
+        /// <param name="figure1">First figure</param>
+        /// <param name="figure2">Second figure</param>
+        /// <returns></returns>
+        public bool IsTwoFuguresOnOneDiagonal(ChessFigure figure1, ChessFigure figure2)
         {
             int f1Row = figure1.ChessBoardPoint.Row;
             int f2Row = figure2.ChessBoardPoint.Row;

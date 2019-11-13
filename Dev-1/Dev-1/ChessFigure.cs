@@ -4,11 +4,24 @@ using System.Linq;
 
 namespace Dev_1
 {
+    /// <summary>
+    /// Class of chess figure
+    /// </summary>
     class ChessFigure
     {
+        /// <summary>
+        /// List of columns
+        /// </summary>
         private List<char> listOfColumns = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+
+        /// <summary>
+        /// Point on chess board
+        /// </summary>
         public ChessCell ChessBoardPoint { get; private set; }
         
+        /// <summary>
+        /// Class constructor without params
+        /// </summary>
         public ChessFigure()
         {
             Console.WriteLine("Print column:");
@@ -19,10 +32,22 @@ namespace Dev_1
 
             ValidationCheck(column, row);
         }
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="column">Char of column</param>
+        /// <param name="row">Number of row</param>
         public ChessFigure(char column,int row)
         {
             ValidationCheck(column, row);
         }
+
+        /// <summary>
+        /// Method that check for validation
+        /// </summary>
+        /// <param name="column">Char of column</param>
+        /// <param name="row">Number of row</param>
         private void ValidationCheck(char column,int row)
         {
             if ((!listOfColumns.Any(x => x.Equals(column)) && !listOfColumns.Any(x => x.Equals((char)(column - 32))))

@@ -2,7 +2,10 @@
 
 namespace Dev_1
 {
-    class OutOfRangeChessBoardException:Exception
+    /// <summary>
+    /// Class of out of range chess board exception
+    /// </summary>
+    class OutOfRangeChessBoardException :Exception
     {
         public OutOfRangeChessBoardException(string message):base(message)
         {
