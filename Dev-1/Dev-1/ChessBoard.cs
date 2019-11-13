@@ -128,8 +128,7 @@ namespace Dev_1
             int f1Col = figure1.ChessBoardPoint.Column - 64;
             int f2Col = figure2.ChessBoardPoint.Column - 64;
 
-            if (GetCellColor(figure1) == GetCellColor(figure2) && (Math.Abs(f1Col + f1Row - (f2Col + f2Row)) 
-                == Math.Abs(f1Row- f2Row) + Math.Abs(f1Col - f2Col) || f1Col + f1Row == f2Col + f2Row))
+            if (GetCellColor(figure1) == GetCellColor(figure2) && (f1Col - f1Row == f2Col - f2Row || f1Col + f1Row == f2Col + f2Row))
             {
                 return true;
             }
