@@ -2,14 +2,23 @@
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using System;
 
 namespace CW_2
 {
+    /// <summary>
+    /// Class of xml provider
+    /// </summary>
     class XmlDBProvider:IDBProvider
     {
+        /// <summary>
+        /// File's derictory
+        /// </summary>
         private const string fileName = "XmlFiles/University.xml";
 
+        /// <summary>
+        /// Lists of all data base objects
+        /// </summary>
+        #region DBOLists
         private List<DBOUniversity> dBOUniversities = new List<DBOUniversity>();
         private List<DBOParking> dBOParkings = new List<DBOParking>();
         private List<DBODean> dBODeans = new List<DBODean>();
@@ -23,10 +32,21 @@ namespace CW_2
         private List<DBOFaculty> dBOFaculties = new List<DBOFaculty>();
         private List<DBOInstitute> dBOInstitutes = new List<DBOInstitute>();
         private List<DBOManagement> dBOManagements = new List<DBOManagement>();
+        #endregion
 
+        /// <summary>
+        ///List of universities 
+        /// </summary>
         private List<University> universities = new List<University>();
 
+        /// <summary>
+        /// Xml document
+        /// </summary>
         private XDocument document;
+
+        /// <summary>
+        /// Class constructors
+        /// </summary>
         public XmlDBProvider()
         {
             document = XDocument.Load(fileName);
@@ -139,6 +159,9 @@ namespace CW_2
        
         #endregion
 
+        /// <summary>
+        /// Methods that returns lists of DBO
+        /// </summary>
         #region Return DBO
         public List<DBOParking> GetDBOParkings()
         {
@@ -194,6 +217,9 @@ namespace CW_2
         }
         #endregion
 
+        /// <summary>
+        /// Method that can search objects by id
+        /// </summary>
         #region Search by Id
         public Address GetAddressById(int id)
         {
@@ -276,6 +302,9 @@ namespace CW_2
         }
         #endregion
 
+        /// <summary>
+        /// Method that returns all list of Departments/Faculties/Managements/Institute/Universtities/Persons/Parking e.t.c.
+        /// </summary>
         #region Return all list
         public List<Department> GetDepartments()
         {
@@ -353,7 +382,7 @@ namespace CW_2
         }
         #endregion
 
-        #region Return list by name
+        #region Methods of interface IDBProvider
         public Dean GetDeanByFacultyName(string facultyName)
         {
             Department faculty = universities.Select(university => university.Departments)
@@ -423,6 +452,9 @@ namespace CW_2
         }
         #endregion
 
+        /// <summary>
+        /// Methods that can add object to xml file
+        /// </summary>
         #region Add to Xml
         public void AddStudent(Student student,int departmentId)
         {

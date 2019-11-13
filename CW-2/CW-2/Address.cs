@@ -62,7 +62,6 @@ namespace CW_2
         #endregion
 
         #region Methods
-
         /// <summary>
         /// Method that overrides method "ToString()".
         /// </summary>
@@ -97,7 +96,6 @@ namespace CW_2
                 return false;
             }
         }
-
         #endregion
     }
 }

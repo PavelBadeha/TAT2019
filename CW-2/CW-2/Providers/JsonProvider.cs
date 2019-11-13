@@ -1,28 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 
 namespace CW_2
 {
+    /// <summary>
+    /// Class of json provider
+    /// </summary>
     class JsonProvider:IDBProvider
     {
+        /// <summary>
+        /// File's derictory to write in
+        /// </summary>
         private static string fileName = @"A:\repos\CW-2\CW-2\JsonFiles\Univer.json";
-        private List<University> universities = new List<University>();        
+
+        /// <summary>
+        /// List of univesrities
+        /// </summary>
+        private List<University> universities = new List<University>(); 
+        
+        /// <summary>
+        /// Setting for serializer to serialize/deserialize inheraited classes correctly
+        /// </summary>
         private JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
 
+        /// <summary>
+        /// Method that initialize universtites by reading json file
+        /// </summary>
         public void Initialize()
         {
             universities = JsonConvert.DeserializeObject<List<University>>(File.ReadAllText(fileName), settings);
         }
-        
+
+        #region Methods of interface IDBProvider
         public List<University> GetUniversities()
         {
             return universities;
         }
-
-        #region Retunr list by name
         public Dean GetDeanByFacultyName(string facultyName)
         {
             Department faculty = universities.SelectMany(university => university.Departments)
@@ -97,11 +112,20 @@ namespace CW_2
         #endregion
 
         #region Add to Json
+        /// <summary>
+        /// Method that can add university to json file
+        /// </summary>
+        /// <param name="university"></param>
         public void AddUniversity(University university)
         {
             universities.Add(university);
             File.WriteAllText(fileName, JsonConvert.SerializeObject(universities,settings));
         }
+
+        /// <summary>
+        /// Method that can add list of universities to json file
+        /// </summary>
+        /// <param name="universities"></param>
         public void AddUniversities(List<University> universities)
         {
             this.universities = universities;
