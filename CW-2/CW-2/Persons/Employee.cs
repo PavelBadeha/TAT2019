@@ -29,7 +29,6 @@ namespace CW_2
             Salary = salary;
         }
 
-
         /// <summary>
         /// Method that overrides method "ToString()".
         /// </summary>

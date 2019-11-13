@@ -86,15 +86,8 @@ namespace CW_2
             else 
                 temp = new Address();
 
-            if (this.Street.Equals(temp.Street) && this.City.Equals(temp.City) &&
-                this.HouseNumber.Equals(temp.HouseNumber))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Street.Equals(temp.Street) && City.Equals(temp.City) &&
+                HouseNumber.Equals(temp.HouseNumber));
         }
         #endregion
     }

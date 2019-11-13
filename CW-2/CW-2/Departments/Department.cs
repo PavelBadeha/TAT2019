@@ -96,8 +96,8 @@ namespace CW_2
 
             Department tempDepartment = (Department) objDepartment;
             
-            return this.GetType() == tempDepartment.GetType() && this.Address.Equals(tempDepartment.Address) &&
-                   this.Name.Equals(tempDepartment.Name);
+            return GetType() == tempDepartment.GetType() && Address.Equals(tempDepartment.Address) &&
+                   Name.Equals(tempDepartment.Name);
         }
 
         /// <summary>
