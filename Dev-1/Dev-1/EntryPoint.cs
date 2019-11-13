@@ -2,19 +2,26 @@
 
 namespace Dev_1
 {
+    /// <summary>
+    /// Class of entry point
+    /// </summary>
     class EntryPoint
     {
+        /// <summary>
+        /// Main method 
+        /// </summary>
         static void Main()
         {
             try
             {
                 ChessFigure figure1 = new ChessFigure('d', 5);
-                ChessFigure figure2 = new ChessFigure('f', 3);
+                ChessFigure figure2 = new ChessFigure('e', 4);
                 ChessBoard board = new ChessBoard();
 
                 Console.WriteLine(board.GetCellColor(figure1));
                 Console.WriteLine(board.GetCellColor(figure2));
                 board.DisplayOnWhatLineIsTwoFigures(figure1, figure2);
+                
             }
             catch(OutOfRangeChessBoardException e)
             {

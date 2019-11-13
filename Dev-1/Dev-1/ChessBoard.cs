@@ -78,10 +78,13 @@ namespace Dev_1
         }
         public bool IsTwoFuguresOnOneDioganal(ChessFigure figure1, ChessFigure figure2)
         {
-            if ((figure1.ChessBoardPoint.Column - 64 == figure1.ChessBoardPoint.Row
-                && figure2.ChessBoardPoint.Column - 64 == figure2.ChessBoardPoint.Row)
-                || (figure1.ChessBoardPoint.Column - 64 + figure1.ChessBoardPoint.Row == 9 
-                && figure2.ChessBoardPoint.Column - 64 + figure2.ChessBoardPoint.Row == 9 ))
+            int f1Row = figure1.ChessBoardPoint.Row;
+            int f2Row = figure2.ChessBoardPoint.Row;
+            int f1Col = figure1.ChessBoardPoint.Column - 64;
+            int f2Col = figure2.ChessBoardPoint.Column - 64;
+
+            if (GetCellColor(figure1) == GetCellColor(figure2) && (Math.Abs(f1Col + f1Row - (f2Col + f2Row)) 
+                == Math.Abs(f1Row- f2Row) + Math.Abs(f1Col - f2Col) || f1Col + f1Row == f2Col + f2Row))
             {
                 return true;
             }
