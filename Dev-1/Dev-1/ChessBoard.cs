@@ -32,13 +32,13 @@ namespace Dev_1
                 for (int j = 1; j < 9; j++)
                 {
                     buffPoint = new ChessCell((char)(i + 64), j);
-                    if ((i % 2 != 0 && j % 2 != 0) || (i % 2 == 0 && j % 2 == 0))
+                    if ((i + j) % 2 == 0)
                     {
-                        CellsColors.Add(buffPoint, "Cell is black");
+                        CellsColors.Add(buffPoint, "Black");
                     }
                     else
                     {
-                        CellsColors.Add(buffPoint, "Cell is white");
+                        CellsColors.Add(buffPoint, "White");
                     }
                 }
             }
@@ -87,14 +87,7 @@ namespace Dev_1
         /// <returns></returns>
         public bool IsTwoFuguresOnOneVertical(ChessFigure figure1,ChessFigure figure2)
         {
-            if(figure1.ChessBoardPoint.Column==figure2.ChessBoardPoint.Column)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (figure1.ChessBoardPoint.Column == figure2.ChessBoardPoint.Column) ;
         }
 
         /// <summary>
@@ -105,14 +98,7 @@ namespace Dev_1
         /// <returns></returns>
         public bool IsTwoFuguresOnOneHorizontal(ChessFigure figure1, ChessFigure figure2)
         {
-            if (figure1.ChessBoardPoint.Row == figure2.ChessBoardPoint.Row)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           return (figure1.ChessBoardPoint.Row == figure2.ChessBoardPoint.Row) ;
         }
 
         /// <summary>
@@ -128,14 +114,7 @@ namespace Dev_1
             int f1Col = figure1.ChessBoardPoint.Column - 64;
             int f2Col = figure2.ChessBoardPoint.Column - 64;
 
-            if (GetCellColor(figure1) == GetCellColor(figure2) && (f1Col - f1Row == f2Col - f2Row || f1Col + f1Row == f2Col + f2Row))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (GetCellColor(figure1) == GetCellColor(figure2) && (f1Col - f1Row == f2Col - f2Row || f1Col + f1Row == f2Col + f2Row));
         }
     }
 }
