@@ -7,9 +7,6 @@ namespace Dev_1
     /// </summary>
     class OutOfRangeChessBoardException :Exception
     {
-        public OutOfRangeChessBoardException(string message):base(message)
-        {
-
-        }
+        public OutOfRangeChessBoardException(string message):base(message) {}
     }
 }

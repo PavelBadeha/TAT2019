@@ -20,8 +20,7 @@ namespace Dev_1
 
                 Console.WriteLine(board.GetCellColor(figure1));
                 Console.WriteLine(board.GetCellColor(figure2));
-                board.DisplayWhichLineTwoFiguresAreOn(figure1, figure2);
-                
+                board.DisplayWhichLineTwoFiguresAreOn(figure1, figure2);              
             }
             catch(OutOfRangeChessBoardException e)
             {
