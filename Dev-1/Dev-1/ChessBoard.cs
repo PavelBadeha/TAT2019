@@ -109,12 +109,7 @@ namespace Dev_1
         /// <returns></returns>
         public bool IsTwoFuguresOnOneDiagonal(ChessFigure figure1, ChessFigure figure2)
         {
-            int f1Row = figure1.ChessBoardPoint.Row;
-            int f2Row = figure2.ChessBoardPoint.Row;
-            int f1Col = figure1.ChessBoardPoint.Column - 64;
-            int f2Col = figure2.ChessBoardPoint.Column - 64;
-
-            return (GetCellColor(figure1) == GetCellColor(figure2) && (f1Col - f1Row == f2Col - f2Row || f1Col + f1Row == f2Col + f2Row));
+            return (Math.Abs(figure1.ChessBoardPoint.Row - figure2.ChessBoardPoint.Row) == Math.Abs(figure1.ChessBoardPoint.Column - figure2.ChessBoardPoint.Column)) ;
         }
     }
 }
