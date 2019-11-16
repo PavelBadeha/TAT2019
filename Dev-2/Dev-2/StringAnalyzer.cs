@@ -3,26 +3,13 @@ using System.Linq;
 
 namespace Dev_2
 {
-    class StringAnalyzer
+    public class StringAnalyzer
     {
-        /// <summary>
-        /// String that need to analyze
-        /// </summary>
-        private string str = string.Empty;
-
-        /// <summary>
-        /// Class constructor without params
-        /// </summary>
-        public StringAnalyzer()
-        {
-            Console.WriteLine("Enter the string:");
-            str = Console.ReadLine();
-        }
 
         /// <summary>
         /// Returns the maximum number of unequal consecutive characters in a string
         /// </summary>
-        public int MaxOfNotIdenticalConsecutiveSymbols()
+        public int MaxOfNotIdenticalConsecutiveSymbols(string str)
         {
             int result = 1;
             int buff = 1;
@@ -52,7 +39,7 @@ namespace Dev_2
         /// <summary>
         /// Returns the maximum number of identical consecutive digits in a string
         /// </summary>
-        public int MaxOfIdenticalConsecutiveDigits()
+        public int MaxOfIdenticalConsecutiveDigits(string str)
         {
             int result = 1;
             int buff = 1;
@@ -83,7 +70,7 @@ namespace Dev_2
         /// <summary>
         /// Returns the maximum number of identical consecutive Latin characters in a string
         /// </summary>
-        public int MaxOfIdenticalConsecutiveLatinSymbols()
+        public int MaxOfIdenticalConsecutiveLatinSymbols(string str)
         {
             int result = 1;
             int buff = 1;

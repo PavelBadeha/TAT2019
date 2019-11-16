@@ -20,10 +20,12 @@ namespace Dev_2
             {
                 try
                 {
+                    Console.WriteLine("Enter the string:");
+                    string str = Console.ReadLine();
                     StringAnalyzer analyzer = new StringAnalyzer();
-                    Console.WriteLine("Max identical digits: " + analyzer.MaxOfIdenticalConsecutiveDigits());
-                    Console.WriteLine("Max identical latins: " + analyzer.MaxOfIdenticalConsecutiveLatinSymbols());
-                    Console.WriteLine("Max not identical symbols: " + analyzer.MaxOfNotIdenticalConsecutiveSymbols());
+                    Console.WriteLine("Max identical digits: " + analyzer.MaxOfIdenticalConsecutiveDigits(str));
+                    Console.WriteLine("Max identical latins: " + analyzer.MaxOfIdenticalConsecutiveLatinSymbols(str));
+                    Console.WriteLine("Max not identical symbols: " + analyzer.MaxOfNotIdenticalConsecutiveSymbols(str));
                     break;
                 }                    
                 catch(Exception e)
