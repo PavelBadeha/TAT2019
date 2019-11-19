@@ -6,7 +6,7 @@ namespace Dev_2UnitTests
     /// TestClass for StringAnalyzer
     /// </summary>
     [TestClass]
-    public class StringAnalyzerTests
+    public class TesterOfStringAnalyzer
     {
         /// <summary>
         /// Instance for StringAnalyzer
