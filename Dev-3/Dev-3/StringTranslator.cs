@@ -9,7 +9,7 @@ namespace Dev_3
     /// <summary>
     /// Class that translates a string
     /// </summary>
-    class StringTranslator
+    public class StringTranslator
     {
         private Dictionary<string,string> _russianToEnglishLetters = new Dictionary<string, string>
         {

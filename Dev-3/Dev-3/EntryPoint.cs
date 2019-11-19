@@ -16,7 +16,7 @@ namespace Dev_3
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
-        {
+        { 
             while(true)
             {
                 try
