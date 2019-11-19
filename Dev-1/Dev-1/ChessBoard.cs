@@ -11,39 +11,8 @@ namespace Dev_1
         /// <summary>
         /// Dictionary of cell->color
         /// </summary>
-        private Dictionary<ChessCell, string> CellsColors = new Dictionary<ChessCell, string>();
-       
-        /// <summary>
-        /// Class constructor without params
-        /// </summary>
-        public ChessBoard()
-        {
-            ChessBoardInitialize();
-        }
-
-        /// <summary>
-        /// Method of chess board initialization(initialize dictionay CellsColor)
-        /// </summary>
-        private void ChessBoardInitialize()
-        {
-            ChessCell buffPoint;
-            for (int i = 1; i < 9; i++)
-            {
-                for (int j = 1; j < 9; j++)
-                {
-                    buffPoint = new ChessCell((char)(i + 64), j);
-                    if ((i + j) % 2 == 0)
-                    {
-                        CellsColors.Add(buffPoint, "Black");
-                    }
-                    else
-                    {
-                        CellsColors.Add(buffPoint, "White");
-                    }
-                }
-            }
-        }
-
+        private Dictionary<ChessCell, string> _cellsColors = new Dictionary<ChessCell, string>();
+      
         /// <summary>
         /// Method that return color of cell
         /// </summary>
@@ -51,7 +20,14 @@ namespace Dev_1
         /// <returns></returns>
         public string GetCellColor(ChessFigure figure)
         {
-            return CellsColors[figure.ChessBoardPoint];
+            if (figure.ChessBoardPoint.Column - 64 + figure.ChessBoardPoint.Row % 2 == 0)
+            {
+                return "White";
+            }
+            else
+            {
+                return "Black";
+            }
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace Dev_1
         /// <summary>
         /// List of columns
         /// </summary>
-        private List<char> listOfColumns = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+        private List<char> _listOfColumns = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
 
         /// <summary>
         /// Point on chess board
@@ -50,8 +50,8 @@ namespace Dev_1
         /// <param name="row">Number of row</param>
         private void ValidationCheck(char column,int row)
         {
-            if ((!listOfColumns.Any(x => x.Equals(column)) && !listOfColumns.Any(x => x.Equals((char)(column - 32))))
-                                                            || row > 8 || row < 0)
+            if ((!_listOfColumns.Any(x => x.Equals(column)) && !_listOfColumns.Any(x => x.Equals((char)(column - 32))))
+                                                            || row > 8 || row < 1)
             {
                 throw new OutOfRangeChessBoardException("Cell is out of chess board range");
             }

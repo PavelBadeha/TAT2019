@@ -14,8 +14,8 @@ namespace Dev_1
         {
             try
             {
-                ChessFigure figure1 = new ChessFigure('d', 2);
-                ChessFigure figure2 = new ChessFigure('b', 4);
+                ChessFigure figure1 = new ChessFigure('a', 1);
+                ChessFigure figure2 = new ChessFigure('g', 3);
                 ChessBoard board = new ChessBoard();
 
                 Console.WriteLine(board.GetCellColor(figure1));
