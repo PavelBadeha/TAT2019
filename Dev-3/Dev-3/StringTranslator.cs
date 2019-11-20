@@ -28,6 +28,12 @@ namespace Dev_3
             { "Z","З" }
         };
 
+        private Dictionary<string, string> _englishSpecialToRussianLetters = new Dictionary<string, string>
+        {
+            {"YO","Ё"},{"ZH","Ж"},{"KH","Х"},{"TS","Ц"},{"CH","Ч"},{"SH","Ш"},{"SCH","СК" },
+            { "YU","Ю" },{"YA","Я"},{"OO","У"}
+        };
+
         /// <summary>
         /// Method that translates a string
         /// </summary>
@@ -42,7 +48,7 @@ namespace Dev_3
 
             str = str.ToUpper();
 
-            if (str[0] < 'Z' && str[0] > 'A')  
+            if (str[0] <= 'Z' && str[0] >= 'A')  
             {
                 return TranslateEngToRus(str);
             }
@@ -62,13 +68,27 @@ namespace Dev_3
             ValidationCheck(str);
             StringBuilder buff = new StringBuilder();
 
-            foreach (var letter in str)
+            for (int i = 0; i < str.Length; i++) 
             {
-                buff.Append(_englishToRussianLetters[letter.ToString()]);
+                if (i < str.Length - 3 && _englishSpecialToRussianLetters.ContainsKey(str.Substring(i,3)))
+                {
+                    buff.Append(_englishSpecialToRussianLetters[str.Substring(i, 3)]);
+                    i += 2;
+                }
+                else if (i < str.Length - 2 && _englishSpecialToRussianLetters.ContainsKey(str.Substring(i, 2)) ) 
+                {
+                    buff.Append(_englishSpecialToRussianLetters[str.Substring(i, 2)]);
+                    i += 1;
+                }
+                else
+                {
+                    buff.Append(_englishToRussianLetters[str[i].ToString()]);
+                }             
             }
 
             return buff.ToString();
         }
+           
 
         /// <summary>
         /// Method that translates russian string ti english 
@@ -92,7 +112,7 @@ namespace Dev_3
         /// </summary>
         /// <param name="str">String that needed to check</param>
         /// FormatException("Invalid string format!"), exception of invalid string format
-        private void ValidationCheck(string str)
+        public void ValidationCheck(string str)
         {
             if (str.Any(x => x >= 'A' && x < 'Z' && (x > 1039 && x < 1072)) || 
                 str.Any(x => x < 'A' && x > 'Z' || (x < 1040 && x > 1071)))

@@ -16,15 +16,11 @@ namespace Dev_3
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
-        { 
-            while(true)
-            {
+        {               
                 try
-                {
-                    Console.WriteLine("Введите строку");
-                    string str = Console.ReadLine();
+                { 
                     StringTranslator translator = new StringTranslator();
-                    Console.WriteLine(translator.Translate(str));
+                    Console.WriteLine(translator.Translate(args[0]));
                 }
                 catch (FormatException e)
                 {
@@ -33,9 +29,7 @@ namespace Dev_3
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                }
-            }    
-           
+                } 
         }
     }
 }
