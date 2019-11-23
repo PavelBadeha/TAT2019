@@ -50,8 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="MailInboxPage.cs" />
-    <Compile Include="MailLoginPage.cs" />
+    <Compile Include="PageObjects\MainMailPage.cs" />
+    <Compile Include="NoValidPageException.cs" />
+    <Compile Include="PageObjects\PageObject.cs" />
+    <Compile Include="PageObjects\MailInboxPage.cs" />
+    <Compile Include="PageObjects\MailLoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
