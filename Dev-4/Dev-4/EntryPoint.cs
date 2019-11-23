@@ -6,19 +6,20 @@ namespace Dev_4
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             IWebDriver driver = new ChromeDriver(@"Y:\Загрузки\chromedriver_win32");
             driver.Url = "https://mail.ru/";
+
             MailLoginPage loginPage = new MailLoginPage(driver);
-            loginPage.LoginAs("sexgurupavel", "badzekha54");
-            string str = loginPage.BadgetText();
-           // driver.Quit();
+            MailInboxPage inboxPage = loginPage.LoginAs("sexgurupavel", "badzekha54");
+
             Console.Clear();
-            Console.WriteLine("Ne pro4itano " + str);
-            loginPage.ReadMessage();
-            str = loginPage.BadgetText();
-            Console.WriteLine("Ne pro4itano " + str);
+            Console.WriteLine(inboxPage.BadgetText());
+
+            inboxPage.ReadUnreadMessage();
+            Console.WriteLine(inboxPage.BadgetText());
+            driver.Quit();
         }
     }
 }

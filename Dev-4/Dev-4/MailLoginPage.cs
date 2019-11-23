@@ -11,50 +11,42 @@ namespace Dev_4
     class MailLoginPage
     {
         private IWebDriver driver;
-        private string title = "Mail.ru: почта, поиск в интернете, новости, игры";
+        private string loginTitle = "Mail.ru: почта, поиск в интернете, новости, игры";
         private By usernameLocator = By.Id("mailbox:login");
         private By passwordLocator = By.Id("mailbox:password");
-        private By badgetLocator = By.ClassName("badge__text");
-        private By messageLocator = By.ClassName("b-checkbox__checkmark");
         private IWebElement usernameInput;
         private IWebElement passwordInput;
-        private IWebElement badget;
-        private IWebElement message;
+
         public MailLoginPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            if (!title.Equals(driver.Title))
+
+            if (!loginTitle.Equals(driver.Title))
             {
                throw new Exception("This no login page");
             }
         }
-        public void ReadMessage()
-        {
-            message = driver.FindElement(messageLocator);
-            message.Click();
-        }
-        public void TypeUserName(string username)
+        public MailLoginPage TypeUserName(string username)
         {
             usernameInput = driver.FindElement(usernameLocator);
             usernameInput.SendKeys(username);
             usernameInput.Submit();
+            return this;
         }
-        public void TypePassword(string password)
+        public MailLoginPage TypePassword(string password)
         {
             passwordInput = driver.FindElement(passwordLocator);
             passwordInput.SendKeys(password);
             passwordInput.Submit();
+            return this;
         }
-        public void LoginAs(string username,string password)
+        public MailInboxPage LoginAs(string username,string password)
         {
             TypeUserName(username);
             TypePassword(password);
+            return new MailInboxPage(driver);
         }
-        public string BadgetText()
-        {
-            badget = driver.FindElement(badgetLocator);
-            return badget.Text;
-        }
+       
     }
 }
