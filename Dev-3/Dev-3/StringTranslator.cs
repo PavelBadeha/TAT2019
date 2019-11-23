@@ -39,12 +39,8 @@ namespace Dev_3
         /// <param name="str">string that needed to translate</param>
         /// <returns>translated string</returns>
         public string Translate(string str)
-        {
-            if (str == string.Empty)
-            {
-                return str;
-            }
-
+        {        
+            ValidationCheck(str);
             str = str.ToUpper();
 
             if (str[0] <= 'Z' && str[0] >= 'A')  
@@ -64,7 +60,6 @@ namespace Dev_3
         /// <returns>translated string</returns>
         private string TranslateEngToRus(string str)
         {
-            ValidationCheck(str);
             StringBuilder buff = new StringBuilder();
 
             for (int i = 0; i < str.Length; i++) 
@@ -113,11 +108,18 @@ namespace Dev_3
         /// FormatException("Invalid string format!"), exception of invalid string format
         public void ValidationCheck(string str)
         {
-            if (str.Any(x => x >= 'A' && x < 'Z' && (x > 1039 && x < 1072)) || 
-                str.Any(x => x < 'A' && x > 'Z' || (x < 1040 && x > 1071)))
+            if(string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str) || str.Contains(" "))
+            {
+                throw new FormatException("Invalid string format!");
+            }
+            str = str.ToUpper();
+
+            if (str.Any(x => x >= 'A' && x <= 'Z') && str.Any(x => x >='А' && x <='Я') ||
+               (str.Any(x => x < 'A' || x > 'Z') && str.Any(x => x < 'А' || x >'Я')))
             {
                 throw new FormatException("Invalid string format!");
             }
         }
     }
 }
+

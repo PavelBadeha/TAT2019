@@ -12,11 +12,13 @@ namespace Dev_3
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
-        {               
+        {
+            while (true)
+            {
                 try
-                { 
+                {
                     StringTranslator translator = new StringTranslator();
-                    Console.WriteLine(translator.Translate(args[0]));
+                    Console.WriteLine(translator.Translate(Console.ReadLine()));
                 }
                 catch (FormatException e)
                 {
@@ -25,7 +27,8 @@ namespace Dev_3
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                } 
+                }
+            }
         }
     }
 }

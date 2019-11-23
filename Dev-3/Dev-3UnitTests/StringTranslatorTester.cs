@@ -1,99 +1,43 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Dev_3UnitTests
 {
     [TestClass]
     public class StringTranslatorTester
     {
-        private Dev_3.StringTranslator translator = new Dev_3.StringTranslator();
-
         [TestMethod]
-        public void TestMethodOfTranslate_StringEmpty_StringEmpty()
+        [DataRow("СКУЛ","school")]
+        [DataRow("АЛФА", "Alfa")]
+        public void TestMethodOfTranslateFromEnglishToRussian(string expected,string actual)
         {
-            Assert.AreEqual(string.Empty, translator.Translate(string.Empty));
+            var translator = new Dev_3.StringTranslator();
+            Assert.AreEqual(expected, translator.Translate(actual));
         }
 
         [TestMethod]
-        public void TestMethodOfTranslate_school_russianSchool()
+        [DataRow("!Азбука")]
+        [DataRow("}Азбука")]
+        [DataRow(null)]
+        [DataRow("12@dq")]
+        [DataRow("12{dq")]
+        [DataRow("AzАя")]
+        [DataRow("")]
+        public void TestMethodOfTranslate_NoCorrectFormat_ThrowFormatException(string stringWithUnkownSymbols )
         {
-            Assert.AreEqual("СКУЛ", translator.Translate("school"));
+            var translator = new Dev_3.StringTranslator();
+            Action actual = () => translator.Translate(stringWithUnkownSymbols);
+
+            Assert.ThrowsException<FormatException>(actual);
         }
 
         [TestMethod]
-        public void TestMethodOfTranslate_alfa_russianAlfa()
+        [DataRow("ARBUZ","арбуз")]
+        [DataRow("YAKOR","якорь")]
+        public void TestMethodOfTranslateFromRussianToEnglish(string expected,string actual)
         {
-            Assert.AreEqual("АЛФА", translator.Translate("Alfa"));
-        }
-
-        [TestMethod]
-        public void TestMethodOfTranslate_UnknownSymbolsRus_Exception()
-        {
-            try
-            {
-                translator.Translate("!Азбука");
-            }
-            catch
-            {
-                Assert.IsTrue(true);
-            }
-        }
-
-        [TestMethod]
-        public void TestMethodOfTranslate_UnknownSymbolsRus2_Exception()
-        {
-            try
-            {
-                translator.Translate("}Азбука");
-            }
-            catch
-            {
-                Assert.IsTrue(true);
-            }
-        }
-        [TestMethod]
-        public void TestMethodOfTranslate_test_TEST()
-        {
-            string test = "тест";
-            Assert.AreEqual("TEST", translator.Translate(test));
-        }
-
-        [TestMethod]
-        public void TestMethodOfTranslate_UnknownSymbols_Exception()
-        {
-            try
-            {
-                translator.Translate("12@dq");
-            }
-            catch
-            {
-                Assert.IsTrue(true);
-            }
-        }
-
-        [TestMethod]
-        public void TestMethodOfTranslate_UnknownSymbols2_Exception()
-        {
-            try
-            {
-                translator.Translate("12{dq");
-            }
-            catch
-            {
-                Assert.IsTrue(true);
-            }
-        }
-
-        [TestMethod]
-        public void TestMethodOfTranslate_StringWithEnglishAndRussianLettersTogether_Exception()
-        {
-            try
-            {
-                translator.Translate("AzАя");
-            }
-            catch
-            {
-                Assert.IsTrue(true);
-            }
+            var translator = new Dev_3.StringTranslator();
+            Assert.AreEqual(expected, translator.Translate(actual));
         }
     }
 }
