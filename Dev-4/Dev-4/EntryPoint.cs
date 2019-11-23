@@ -19,7 +19,7 @@ namespace Dev_4
 
             MainMailPage mailPage = new MainMailPage(driver);
             MailLoginPage loginPage =  mailPage.NavigateToLoginPage();
-            MailInboxPage inboxPage = loginPage.LoginAs("sexgurupavel", "badzekha54");
+            MailInboxPage inboxPage = loginPage.LoginAs("kodzimaisgenius", "DeathStranding");
 
             Console.Clear();
             Console.WriteLine("unread messages counter = " + inboxPage.GetUnreadMessagesCount());
