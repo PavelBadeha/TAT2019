@@ -14,19 +14,25 @@ namespace Dev_4
         /// </summary>
         static void Main()
         {
-            IWebDriver driver = new ChromeDriver(@"Y:\Загрузки\chromedriver_win32");
-            driver.Url = "https://m.mail.ru/";
+            try
+            {
+                IWebDriver driver = new ChromeDriver();
 
-            MainMailPage mailPage = new MainMailPage(driver);
-            MailLoginPage loginPage =  mailPage.NavigateToLoginPage();
-            MailInboxPage inboxPage = loginPage.LoginAs("kodzimaisgenius", "DeathStranding");
+                MailRu mailRu = new MailRu(driver);
 
-            Console.Clear();
-            Console.WriteLine("unread messages counter = " + inboxPage.GetUnreadMessagesCount());
-            inboxPage.ReadUnreadMessage();
-            Console.WriteLine("unread messages counter = " + inboxPage.GetUnreadMessagesCount());
-            inboxPage.NavigateToMainMailPage();
-            driver.Quit();
+                mailRu.NavigetToLoginPage();
+                mailRu.LoginAs("kodzimaisgenius", "DeathStranding");
+                Console.WriteLine(mailRu.GetUnreadMessagesCount());
+                mailRu.ReadUnreadMessage();
+                Console.WriteLine(mailRu.GetUnreadMessagesCount());
+                mailRu.NavigateToMainPage();
+                driver.Quit();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
     }
 }

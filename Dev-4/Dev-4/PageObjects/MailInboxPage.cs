@@ -7,12 +7,12 @@ namespace Dev_4
     /// </summary>
     class MailInboxPage:PageObject
     {
-        private By unreadMessagesCounterLocator = By.ClassName("msglist-title__counter");
-        private By messageLocator = By.CssSelector(".js-messageline.messageline.messageline_unread");
-        private By mainMailPageButtonLocator = By.CssSelector("[href*='http://m.mail.ru']");
-        private IWebElement unreadMessagesCounter;
-        private IWebElement unreadMessage;
-        private IWebElement mainMailPageButton;
+        private By _unreadMessagesCounterLocator = By.ClassName("msglist-title__counter");
+        private By _messageLocator = By.CssSelector(".js-messageline.messageline.messageline_unread");
+        private By _mainMailPageButtonLocator = By.CssSelector("[href*='http://m.mail.ru']");
+        private IWebElement _unreadMessagesCounter;
+        private IWebElement _unreadMessage;
+        private IWebElement _mainMailPageButton;
 
         /// <summary>
         /// Array of strings that page title must be have
@@ -41,8 +41,8 @@ namespace Dev_4
         {
            try
             {
-                unreadMessagesCounter = driver.FindElement(unreadMessagesCounterLocator);
-                return unreadMessagesCounter.Text;
+                _unreadMessagesCounter = driver.FindElement(_unreadMessagesCounterLocator);
+                return _unreadMessagesCounter.Text;
             }
             catch(NoSuchElementException)
             {
@@ -57,8 +57,8 @@ namespace Dev_4
         {
             try
             {
-                unreadMessage = driver.FindElement(messageLocator);
-                unreadMessage.Click();
+                _unreadMessage = driver.FindElement(_messageLocator);
+                _unreadMessage.Click();
                 driver.Navigate().Back();
             }
             catch(NoSuchElementException)
@@ -73,8 +73,8 @@ namespace Dev_4
         /// <returns>Maine page</returns>
         public MainMailPage NavigateToMainMailPage()
         {
-            mainMailPageButton = driver.FindElement(mainMailPageButtonLocator);
-            mainMailPageButton.Click();
+            _mainMailPageButton = driver.FindElement(_mainMailPageButtonLocator);
+            _mainMailPageButton.Click();
             return new MainMailPage(driver);
         }
     }

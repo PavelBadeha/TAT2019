@@ -7,10 +7,10 @@ namespace Dev_4
     /// </summary>
     class MainMailPage : PageObject
     {
-        private IWebElement loginPageButton;
-        private IWebElement inboxPageButton;
-        private By loginPageButtonLocator = By.ClassName("social__link");
-        private By inboxPageButtonLocator = By.CssSelector("[href*='https://r.mail.ru/n109322792']");
+        private IWebElement _loginPageButton;
+        private IWebElement _inboxPageButton;
+        private By _loginPageButtonLocator = By.ClassName("social__link");
+        private By _inboxPageButtonLocator = By.CssSelector("[href*='https://r.mail.ru/n109322792']");
 
         /// <summary>
         /// Page title
@@ -37,8 +37,8 @@ namespace Dev_4
         /// <returns>Inbox page</returns>
         public MailInboxPage NavigateToMailInboxPage()
         {
-            inboxPageButton = driver.FindElement(inboxPageButtonLocator);
-            inboxPageButton.Click();
+            _inboxPageButton = driver.FindElement(_inboxPageButtonLocator);
+            _inboxPageButton.Click();
             return new MailInboxPage(driver);
         }
 
@@ -48,8 +48,8 @@ namespace Dev_4
         /// <returns>Login page</returns>
         public MailLoginPage NavigateToLoginPage()
         {
-            loginPageButton = driver.FindElement(loginPageButtonLocator);
-            loginPageButton.Click();
+            _loginPageButton = driver.FindElement(_loginPageButtonLocator);
+            _loginPageButton.Click();
             return new MailLoginPage(driver);
         }
     }

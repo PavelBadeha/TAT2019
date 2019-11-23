@@ -7,10 +7,10 @@ namespace Dev_4
     /// </summary>
     class MailLoginPage:PageObject
     {
-        private By usernameLocator = By.Name("Login");
-        private By passwordLocator = By.Name("Password");
-        private IWebElement usernameInput;
-        private IWebElement passwordInput;
+        private By _usernameLocator = By.Name("Login");
+        private By _passwordLocator = By.Name("Password");
+        private IWebElement _usernameInput;
+        private IWebElement _passwordInput;
 
         /// <summary>
         /// Page title
@@ -38,9 +38,9 @@ namespace Dev_4
         /// <returns>Web element of username field</returns>
         public IWebElement TypeUserName(string username)
         {
-            usernameInput = driver.FindElement(usernameLocator);
-            usernameInput.SendKeys(username);
-            return usernameInput;
+            _usernameInput = driver.FindElement(_usernameLocator);
+            _usernameInput.SendKeys(username);
+            return _usernameInput;
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Dev_4
         /// <returns>Web element of password field</returns>
         public IWebElement TypePassword(string password)
         {
-            passwordInput = driver.FindElement(passwordLocator);
-            passwordInput.SendKeys(password);
-            return passwordInput;
+            _passwordInput = driver.FindElement(_passwordLocator);
+            _passwordInput.SendKeys(password);
+            return _passwordInput;
         }
 
         /// <summary>
