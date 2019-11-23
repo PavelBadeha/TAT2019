@@ -17,8 +17,8 @@ namespace Dev_3
             {
                 try
                 {
-                    StringTranslator translator = new StringTranslator();
-                    Console.WriteLine(translator.Translate(Console.ReadLine()));
+                    StringTranslitor translator = new StringTranslitor();
+                    Console.WriteLine(translator.Translite(Console.ReadLine()));
                 }
                 catch (FormatException e)
                 {

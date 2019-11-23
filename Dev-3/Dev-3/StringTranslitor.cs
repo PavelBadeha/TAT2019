@@ -6,9 +6,9 @@ using System.Text;
 namespace Dev_3
 {
     /// <summary>
-    /// Class that translates a string
+    /// Class that translites a string
     /// </summary>
-    public class StringTranslator
+    public class StringTranslitor
     {
         private Dictionary<string,string> _russianToEnglishLetters = new Dictionary<string, string>
         {
@@ -34,31 +34,31 @@ namespace Dev_3
         };
 
         /// <summary>
-        /// Method that translates a string
+        /// Method that translites a string
         /// </summary>
-        /// <param name="str">string that needed to translate</param>
-        /// <returns>translated string</returns>
-        public string Translate(string str)
+        /// <param name="str">string that needed to translite</param>
+        /// <returns>translited string</returns>
+        public string Translite(string str)
         {        
             ValidationCheck(str);
             str = str.ToUpper();
 
             if (str[0] <= 'Z' && str[0] >= 'A')  
             {
-                return TranslateEngToRus(str);
+                return TransliteEngToRus(str);
             }
             else
             {
-                return TranslateRusToEng(str);
+                return TransliteRusToEng(str);
             }
         }
 
         /// <summary>
-        /// Method that translates english string to russian
+        /// Method that translites english string to russian
         /// </summary>
-        /// <param name="str">String that needed to translate</param>
-        /// <returns>translated string</returns>
-        private string TranslateEngToRus(string str)
+        /// <param name="str">String that needed to translite</param>
+        /// <returns>translited string</returns>
+        private string TransliteEngToRus(string str)
         {
             StringBuilder buff = new StringBuilder();
 
@@ -85,11 +85,11 @@ namespace Dev_3
            
 
         /// <summary>
-        /// Method that translates russian string ti english 
+        /// Method that translites russian string to english 
         /// </summary>
-        /// <param name="str">String that needed to translate</param>
-        /// <returns>translated string</returns>
-        private string TranslateRusToEng(string str)
+        /// <param name="str">String that needed to translite</param>
+        /// <returns>translited string</returns>
+        private string TransliteRusToEng(string str)
         {
             StringBuilder buff = new StringBuilder();
 
