@@ -15,7 +15,7 @@ namespace Dev_5
         /// <summary>
         /// Page title
         /// </summary>
-        public string LoginTitle { get; } = "Вход — Почта Mail.Ru";
+        public string LoginTitle { get; } = "Mail.ru: почта, поиск в интернете, новости, игры";
 
         /// <summary>
         /// Class constructor
@@ -27,7 +27,7 @@ namespace Dev_5
         {
             if (!LoginTitle.Equals(driver.Title))
             {
-               // throw new NoValidPageException("This no login page");
+               throw new NoValidPageException("This no login page");
             }
         }
 
@@ -38,7 +38,7 @@ namespace Dev_5
         /// <returns>Web element of username field</returns>
         public IWebElement TypeUserName(string username)
         {
-            _usernameInput = driver.FindElement(_usernameLocator);
+            _usernameInput = driver.GetIWebElementBy(_usernameLocator);
             _usernameInput.SendKeys(username);
             return _usernameInput;
         }
@@ -50,7 +50,7 @@ namespace Dev_5
         /// <returns>Web element of password field</returns>
         public IWebElement TypePassword(string password)
         {
-            _passwordInput = driver.FindElement(_passwordLocator);
+            _passwordInput = driver.GetIWebElementBy(_passwordLocator);
             _passwordInput.SendKeys(password);
             return _passwordInput;
         }
@@ -67,6 +67,5 @@ namespace Dev_5
             TypePassword(password).Submit();
             return new MailInboxPage(driver);
         }
-
     }
 }

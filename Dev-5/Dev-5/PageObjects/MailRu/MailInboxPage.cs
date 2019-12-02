@@ -12,16 +12,13 @@ namespace Dev_5
     class MailInboxPage : PageObject
     {
         private By _unreadMessagesCounterLocator = By.Id("g_mail_events");
-        private By _messageLocator = By.CssSelector(".llc__item_unread");
-        private By _mainMailPageButtonLocator = By.CssSelector("[href*='http://mail.ru']");
-        private By _sendMessageButtonLocator = By.ClassName("compose-button__wrapper");
+        private By _messageLocator = By.XPath("//div[@class='llc__item llc__item_correspondent llc__item_unread']");
+        private By _sendMessageButtonLocator = By.XPath("//span[@class='compose-button__wrapper']");
         private By _recipientEmailFiedLocator = By.CssSelector(".container--H9L5q.size_s--3_M-_");
         private By _sendMessageFieldLocator = By.XPath(".//div[@role='textbox']/div/div[1]");
-           // ("/html/body/div[16]/div[2]/div/div[1]/div[2]/div[3]/div[5]/div/div/div[2]/div[1]/div/div[1]");
         private By _confirmationOfSendingMessageButtonLocator = By.CssSelector(".button2.button2_base.button2_primary.button2_compact.button2_hover-support.js-shortcut");
         private IWebElement _unreadMessagesCounter;
         private IWebElement _unreadMessage;
-        private IWebElement _mainMailPageButton;
         private IWebElement _sendMessageButton;
         private IWebElement _sendMessageField;
         private IWebElement _recipientEmailField;
@@ -53,7 +50,7 @@ namespace Dev_5
         /// <returns></returns>
         public string GetUnreadMessagesCount()
         {
-            _unreadMessagesCounter = _wait.Until(ExpectedConditions.ElementIsVisible(_unreadMessagesCounterLocator));
+            _unreadMessagesCounter = driver.GetIWebElementBy(_unreadMessagesCounterLocator);
             return _unreadMessagesCounter.Text;
         }
 
@@ -64,7 +61,8 @@ namespace Dev_5
         {
             if (int.Parse(GetUnreadMessagesCount()) > 0) 
             {
-                _unreadMessage = _wait.Until(ExpectedConditions.ElementIsVisible(_messageLocator));
+                _unreadMessage = driver.GetIWebElementBy(_messageLocator);
+                Thread.Sleep(500);
                 _unreadMessage.Click();
                 
                 if( _wait.Until(ExpectedConditions.TitleIs("Почта Mail.ru")))
@@ -76,30 +74,19 @@ namespace Dev_5
 
         public void SendMessage(string recipientEmail, string message)
         {
-            _sendMessageButton = _wait.Until(ExpectedConditions.ElementIsVisible(_sendMessageButtonLocator));
-            Thread.Sleep(500);
+            _sendMessageButton = driver.GetIWebElementBy(_sendMessageButtonLocator);
             _sendMessageButton.Click();
 
-            _recipientEmailField = _wait.Until(ExpectedConditions.ElementIsVisible(_recipientEmailFiedLocator));
+            _recipientEmailField = driver.GetIWebElementBy(_recipientEmailFiedLocator);
             _recipientEmailField.SendKeys(recipientEmail);
 
-            _sendMessageField = _wait.Until(ExpectedConditions.ElementIsVisible(_sendMessageFieldLocator));
+            _sendMessageField = driver.GetIWebElementBy(_sendMessageFieldLocator);
             _sendMessageField.SendKeys(message);
 
-            _confirmationOfSendingMessageButton = _wait.Until(ExpectedConditions.ElementIsVisible(_confirmationOfSendingMessageButtonLocator));
-            Thread.Sleep(1000);
+            _confirmationOfSendingMessageButton = driver.GetIWebElementBy(_confirmationOfSendingMessageButtonLocator);
             _confirmationOfSendingMessageButton.Click();
-        }
-
-        /// <summary>
-        /// Method that navigates to main page
-        /// </summary>
-        /// <returns>Maine page</returns>
-        public MainMailPage NavigateToMainMailPage()
-        {
-            _mainMailPageButton =  driver.FindElement(_mainMailPageButtonLocator);
-            _mainMailPageButton.Click();
-            return new MainMailPage(driver);
+            var closeButton = driver.GetIWebElementBy(By.CssSelector(".button2.button2_has-ico.button2_close.button2_pure.button2_clean.button2_short.button2_hover-support"));
+            closeButton.Click();
         }
     }
 }
