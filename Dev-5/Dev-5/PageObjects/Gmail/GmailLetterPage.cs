@@ -27,7 +27,7 @@ namespace Dev_5
         {
             if (!_wait.Until(ExpectedConditions.TitleContains(_letterTitle)))
             {
-                // throw new NoValidPageException("This no inbox page");
+                throw new NoValidPageException("This no inbox page");
             }
         }
         public GmailLetterPage Reply(string replyMessage)
@@ -38,6 +38,7 @@ namespace Dev_5
             _replyTextField.SendKeys(replyMessage);
             _sendReplyButton = driver.GetIWebElementBy(_sendReplyButtonLocator);
             _sendReplyButton.Click();
+
             return this;
         }
     }
