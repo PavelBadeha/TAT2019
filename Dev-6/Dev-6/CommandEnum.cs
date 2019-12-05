@@ -5,7 +5,7 @@
     /// </summary>
     enum Commands
     {
-        CountType = 1,
+        CountTypes = 1,
         AveragePrice,
         AveragePriceType,
         CountAll,

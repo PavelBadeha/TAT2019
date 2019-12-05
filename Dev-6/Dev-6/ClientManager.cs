@@ -58,7 +58,7 @@ namespace Dev_6
         /// </summary>
         public void ChooseCommand()
         {
-            Console.WriteLine("(1)Count types\n(2)AveragePrice\n(3)AveragePriceType\n(4)Count all\n(5)Exit");
+            Console.WriteLine("(1)CountTypes\n(2)AveragePrice\n(3)AveragePriceType\n(4)Count all\n(5)Exit");
             Commands command;
             while (true)
             {                
