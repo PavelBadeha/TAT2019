@@ -50,7 +50,11 @@ namespace Dev_6
         /// <returns></returns>
         public double GetAveragePrice()
         {
-            return Cars.Select(x => x.Price).Average();
+            if (Cars.Count > 0)
+            {
+                return Cars.Select(x => x.Price).Average();
+            }
+            return 0;
         }
 
         /// <summary>
