@@ -18,7 +18,7 @@ namespace Dev_5
         /// <returns></returns>
         public static IWebElement GetIWebElementBy(this IWebDriver driver,By locator)
         {
-            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 10));
             return wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
     }

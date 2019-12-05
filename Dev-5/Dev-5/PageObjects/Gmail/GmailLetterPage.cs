@@ -30,12 +30,20 @@ namespace Dev_5
                 throw new NoValidPageException("This no inbox page");
             }
         }
+
+        /// <summary>
+        /// Method that can reply to letter
+        /// </summary>
+        /// <param name="replyMessage"></param>
+        /// <returns></returns>
         public GmailLetterPage Reply(string replyMessage)
         {
             _replyButton = driver.GetIWebElementBy(_replyButtonLocator);
             _replyButton.Click();
+
             _replyTextField = driver.GetIWebElementBy(_replyTextFieldLocator);
             _replyTextField.SendKeys(replyMessage);
+
             _sendReplyButton = driver.GetIWebElementBy(_sendReplyButtonLocator);
             _sendReplyButton.Click();
 

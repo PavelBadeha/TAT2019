@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
-using OpenQA.Selenium.Support.UI;
-using System;
 using System.Threading;
 
 namespace Dev_5
@@ -11,7 +9,7 @@ namespace Dev_5
     /// </summary>
     class MailInboxPage : PageObject
     {
-        private By _unreadMessagesCounterLocator = By.Id("g_mail_events");
+        private By _unreadMessagesCounterLocator = By.ClassName("x-ph__link__balloon");
         private By _messageLocator = By.XPath("//div[@class='llc__item llc__item_correspondent llc__item_unread']");
         private By _sendMessageButtonLocator = By.XPath("//span[@class='compose-button__wrapper']");
         private By _recipientEmailFiedLocator = By.CssSelector(".container--H9L5q.size_s--3_M-_");
@@ -50,7 +48,7 @@ namespace Dev_5
         /// <returns></returns>
         public string GetUnreadMessagesCount()
         {
-            _unreadMessagesCounter = driver.GetIWebElementBy(_unreadMessagesCounterLocator);
+            _unreadMessagesCounter = _wait.Until(ExpectedConditions.ElementExists(_unreadMessagesCounterLocator));
             return _unreadMessagesCounter.Text;
         }
 
@@ -59,7 +57,7 @@ namespace Dev_5
         /// </summary>
         public void ReadUnreadMessage()
         {
-            if (int.Parse(GetUnreadMessagesCount()) > 0) 
+            if (GetUnreadMessagesCount()!=string.Empty) 
             {
                 _unreadMessage = driver.GetIWebElementBy(_messageLocator);
                 Thread.Sleep(500);
@@ -72,6 +70,11 @@ namespace Dev_5
             }
         }
 
+        /// <summary>
+        /// Method that sends message
+        /// </summary>
+        /// <param name="recipientEmail">Recipient email</param>
+        /// <param name="message">Message</param>
         public void SendMessage(string recipientEmail, string message)
         {
             _sendMessageButton = driver.GetIWebElementBy(_sendMessageButtonLocator);
@@ -85,6 +88,7 @@ namespace Dev_5
 
             _confirmationOfSendingMessageButton = driver.GetIWebElementBy(_confirmationOfSendingMessageButtonLocator);
             _confirmationOfSendingMessageButton.Click();
+
             var closeButton = driver.GetIWebElementBy(By.CssSelector(".button2.button2_has-ico.button2_close.button2_pure.button2_clean.button2_short.button2_hover-support"));
             closeButton.Click();
         }
