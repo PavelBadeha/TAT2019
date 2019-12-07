@@ -14,7 +14,7 @@ namespace CW_5
         {
             try
             {
-                Parking parking = new Parking();
+                TransportOrganization parking = new TransportOrganization();
                 Bus bus = new Bus(new Chassis(4, 100, 10),
                                   new Engine(100, 2, "dizel", 20),
                                   new Transmission("ZL1", 4, "GomSelmash"),
@@ -37,9 +37,9 @@ namespace CW_5
                 parking.Transports.Add(scooter);
                 parking.Transports.Add(truck);
 
-               // parking.DisplayInfoAboutBusAndTrucksEngine();
+                parking.DisplayInfoAboutBusAndTrucksEngine();
                 parking.DisplayInfoAboutTransportsWithEngineCapacityMore(1.5f);
-                //parking.DisplayInfoAboutTrnasportsOrderByTransmissionType();
+                parking.DisplayInfoAboutTrnasportsOrderByTransmissionType();
             }
             catch(FormatException e)
             {

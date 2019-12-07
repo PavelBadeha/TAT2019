@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CW_5
 {
-    class Parking
+    class TransportOrganization
     {
         public List<Transport> Transports { get; set; } = new List<Transport>();
         public void DisplayInfoAboutTransportsWithEngineCapacityMore(float engineCapacity)
