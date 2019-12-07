@@ -29,6 +29,8 @@ namespace Dev_4
             {
                 throw new NoValidPageException();
             }
+            _inboxPageButton = driver.FindElement(_inboxPageButtonLocator);
+            _loginPageButton = driver.FindElement(_loginPageButtonLocator);
         }
 
         /// <summary>
@@ -36,8 +38,7 @@ namespace Dev_4
         /// </summary>
         /// <returns>Inbox page</returns>
         public MailInboxPage NavigateToMailInboxPage()
-        {
-            _inboxPageButton = driver.FindElement(_inboxPageButtonLocator);
+        {         
             _inboxPageButton.Click();
             return new MailInboxPage(driver);
         }
@@ -47,8 +48,7 @@ namespace Dev_4
         /// </summary>
         /// <returns>Login page</returns>
         public MailLoginPage NavigateToLoginPage()
-        {
-            _loginPageButton = driver.FindElement(_loginPageButtonLocator);
+        {           
             _loginPageButton.Click();
             return new MailLoginPage(driver);
         }

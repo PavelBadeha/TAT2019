@@ -26,7 +26,6 @@ namespace Dev_4
                 mailRu.ReadUnreadMessage();
                 Console.WriteLine(mailRu.GetUnreadMessagesCount());
                 mailRu.NavigateToMainPage();
-              //  driver.Quit();
             }
             catch(Exception e)
             {

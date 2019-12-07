@@ -7,7 +7,7 @@ namespace Dev_4
     /// </summary>
     class MailInboxPage:PageObject
     {
-        private By _unreadMessagesCounterLocator = By.ClassName("msglist-title__counter");
+        private By _unreadMessagesCounterLocator = By.Id("g_mail_events");
         private By _messageLocator = By.CssSelector(".js-messageline.messageline.messageline_unread");
         private By _mainMailPageButtonLocator = By.CssSelector("[href*='http://m.mail.ru']");
         private IWebElement _unreadMessagesCounter;
@@ -31,40 +31,27 @@ namespace Dev_4
             {
                 throw new NoValidPageException("This no inbox page");               
             }
+            _unreadMessagesCounter = driver.FindElement(_unreadMessagesCounterLocator);
+            _unreadMessage = driver.FindElement(_messageLocator);
+            _mainMailPageButton = driver.FindElement(_mainMailPageButtonLocator);
         }
 
         /// <summary>
         /// Method that returns count of unread messages
         /// </summary>
         /// <returns></returns>
-        public string GetUnreadMessagesCount()
+        public int GetUnreadMessagesCount()
         {
-           try
-            {
-                _unreadMessagesCounter = driver.FindElement(_unreadMessagesCounterLocator);
-                return _unreadMessagesCounter.Text;
-            }
-            catch(NoSuchElementException)
-            {
-                return 0.ToString();
-            }
+            return int.Parse(_unreadMessagesCounter.Text);
         }
 
         /// <summary>
         /// Method that reads unread message
         /// </summary>
         public void ReadUnreadMessage()
-        {
-            try
-            {
-                _unreadMessage = driver.FindElement(_messageLocator);
-                _unreadMessage.Click();
-                driver.Navigate().Back();
-            }
-            catch(NoSuchElementException)
-            {
-
-            }
+        {              
+            _unreadMessage.Click();
+            driver.Navigate().Back();
         }
 
         /// <summary>
@@ -73,7 +60,6 @@ namespace Dev_4
         /// <returns>Maine page</returns>
         public MainMailPage NavigateToMainMailPage()
         {
-            _mainMailPageButton = driver.FindElement(_mainMailPageButtonLocator);
             _mainMailPageButton.Click();
             return new MainMailPage(driver);
         }
