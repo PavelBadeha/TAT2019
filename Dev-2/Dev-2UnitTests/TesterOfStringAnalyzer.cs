@@ -19,57 +19,66 @@ namespace Dev_2UnitTests
         [TestMethod]
         public void TestIdenticalDigits_EmptyString_0()
         {
+            var analyzer = new Dev_2.StringAnalyzer();
             Assert.AreEqual(0, analyzer.MaxOfIdenticalConsecutiveDigits(string.Empty));
         }
 
         [TestMethod]
-        public void TestIdenticalDigits_0123_1()
+        public void TestIdenticalDigits()
         {
-            Assert.AreEqual(1, analyzer.MaxOfIdenticalConsecutiveDigits("0123"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 1;
+            string actual = "0123";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveDigits(actual));
         }
 
         [TestMethod]
-        public void TestIdenticalDigits_899abc_2()
+        public void TestIdenticalDigitsStringWithLatinSymbols()
         {
-            Assert.AreEqual(2, analyzer.MaxOfIdenticalConsecutiveDigits("899abc"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 2;
+            string actual = "899abc";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveDigits(actual));
         }
 
 
         [TestMethod]
-        public void TestIdenticalDigits_abc_0()
+        public void TestIdenticalDigitsStringWithNoDigits()
         {
-            Assert.AreEqual(0, analyzer.MaxOfIdenticalConsecutiveDigits("abc"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 0;
+            string actual = "abc";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveDigits(actual));
         }
 
         /// <summary>
         /// TestMethod for MaxOfIdenticalConsecutiveLatinSymbols method
         /// </summary>
         [TestMethod]
-        public void TestIdenticalLatin_EmptyString_0()
+        public void TestIdenticalLatin_StringWithoutLatinLetters_0()
         {
-            Assert.AreEqual(0, analyzer.MaxOfIdenticalConsecutiveLatinSymbols(string.Empty));
-            Assert.AreEqual(0, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("{-9481'"));
-            Assert.AreEqual(2, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("AAbpod"));
-            Assert.AreEqual(3, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("14912ZzZZZ"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 0;
+            string actual = "{-9481'";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveLatinSymbols(actual));
         }
 
         [TestMethod]
-        public void TestIdenticalLatin_StringWithoutLetters_0()
+        public void TestIdenticalLatin_StringWithUpperCases_2()
         {
-            Assert.AreEqual(0, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("{-9481'"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 2;
+            string actual = "AAbpod";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveLatinSymbols(actual));
         }
 
         [TestMethod]
-        public void TestIdenticalLatin_AAbpod_2()
+        public void TestIdenticalLatin_StringWithDigits_3()
         {
-            Assert.AreEqual(2, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("AAbpod"));
-        }
-
-        [TestMethod]
-        public void TestIdenticalLatin_14912ZzZZZ_3()
-        {
- 
-            Assert.AreEqual(3, analyzer.MaxOfIdenticalConsecutiveLatinSymbols("14912ZzZZZ"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 3;
+            string actual = "14912ZzZZZ";
+            Assert.AreEqual(expected, analyzer.MaxOfIdenticalConsecutiveLatinSymbols(actual));
         }
         /// <summary>
         /// TestMethod for MaxOfNotIdenticalConsecutiveSymbols method
@@ -77,31 +86,46 @@ namespace Dev_2UnitTests
         [TestMethod]
         public void TestNotIdenticalSymbols_EmptyString_0()
         {
-            Assert.AreEqual(0, analyzer.MaxOfNotIdenticalConsecutiveSymbols(string.Empty));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 0;
+            string actual = string.Empty;
+            Assert.AreEqual(expected, analyzer.MaxOfNotIdenticalConsecutiveSymbols(actual));
         }
 
         [TestMethod]
-        public void TestNotIdenticalSymbols_aaaa_1()
+        public void TestNotIdenticalSymbols_StringWithOneIdenticalSymbols_1()
         {
-            Assert.AreEqual(1, analyzer.MaxOfNotIdenticalConsecutiveSymbols("aaaa"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 1;
+            string actual = "aaaa";
+            Assert.AreEqual(expected, analyzer.MaxOfNotIdenticalConsecutiveSymbols(actual));
         }
 
         [TestMethod]
-        public void TestNotIdenticalSymbols_9481_4()
+        public void TestNotIdenticalSymbols_StringWithNoIdenticalDigits_4()
         {
-            Assert.AreEqual(4, analyzer.MaxOfNotIdenticalConsecutiveSymbols("9481"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 4;
+            string actual = "9481";
+            Assert.AreEqual(expected, analyzer.MaxOfNotIdenticalConsecutiveSymbols(actual));
         }
 
         [TestMethod]
-        public void TestNotIdenticalSymbols_AAbpod_5()
+        public void TestNotIdenticalSymbols_StringWithLatinSumbols_5()
         {
-            Assert.AreEqual(5, analyzer.MaxOfNotIdenticalConsecutiveSymbols("AAbpod"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 5;
+            string actual = "AAbpod";
+            Assert.AreEqual(expected, analyzer.MaxOfNotIdenticalConsecutiveSymbols(actual));
         }
 
         [TestMethod]
-        public void TestNotIdenticalSymbols_14912ZzZZZ_8()
+        public void TestNotIdenticalSymbols_StringWithDigitsAndLatinSymbols_8()
         {
-            Assert.AreEqual(8, analyzer.MaxOfNotIdenticalConsecutiveSymbols("14912ZzZZZ"));
+            var analyzer = new Dev_2.StringAnalyzer();
+            int expected = 8;
+            string actual = "14912ZzZZZ";
+            Assert.AreEqual(expected, analyzer.MaxOfNotIdenticalConsecutiveSymbols(actual));
         }
     }
 }

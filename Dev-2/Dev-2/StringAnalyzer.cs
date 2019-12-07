@@ -1,38 +1,43 @@
 ﻿using System.Linq;
+using System;
 
 namespace Dev_2
 {
     public class StringAnalyzer
     {
+        private int MaxConsecutiveSymbols(string str,Func<string,int,bool> func)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return 0;
+            }
 
+            int result = 1;
+            int maxCount = 1;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (func(str,i))
+                {
+                    maxCount++;
+                }
+                else
+                {
+                    if (maxCount > result)
+                    {
+                        result = maxCount;
+                    }
+                    maxCount = 1;
+                }
+            }
+            return result;
+        }
         /// <summary>
         /// Returns the maximum number of unequal consecutive characters in a string
         /// </summary>
         public int MaxOfNotIdenticalConsecutiveSymbols(string str)
         {
-            int result = 1;
-            int buff = 1;
-
-            for (int i = 0; i < str.Length; i++) 
-            {
-                if( i < str.Length - 1 && str[i + 1] != str[i])
-                {
-                    buff++;
-                }
-                else
-                {
-                    if (buff > result)
-                    {
-                        result = buff;
-                    }
-                    buff = 1;
-                }
-            }
-            if (str == string.Empty)
-            {
-                return 0;
-            }
-            return result;                   
+            return MaxConsecutiveSymbols(str, (x, i) => i < x.Length - 1 && (x[i + 1] != x[i]));           
         }
 
         /// <summary>
@@ -40,62 +45,25 @@ namespace Dev_2
         /// </summary>
         public int MaxOfIdenticalConsecutiveDigits(string str)
         {
-            int result = 1;
-            int buff = 1;
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (i < str.Length - 1 && str[i + 1] == str[i] && (str[i] > 47 && str[i] < 58))
-                {
-                    buff++;
-                }
-                else
-                {
-                    if (buff > result)
-                    {
-                        result = buff;
-                    }
-                    buff = 1;
-                }
-            }
-
             if (!str.Any(x => x > 47 && x < 58))
             {
                 return 0;
             }
-            return result;
+
+            return MaxConsecutiveSymbols(str, (x, i) => i < x.Length - 1 && (x[i] > 47 && x[i] < 58) && (x[i + 1] == x[i]));               
         }
 
         /// <summary>
         /// Returns the maximum number of identical consecutive Latin characters in a string
         /// </summary>
         public int MaxOfIdenticalConsecutiveLatinSymbols(string str)
-        {
-            int result = 1;
-            int buff = 1;
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                if ((i < str.Length - 1 && str[i + 1] == str[i])
-                    && ( str[i] > 64 && str[i] < 91 || (str[i] > 96 && str[i] < 123)))
-                {
-                    buff++;
-                }
-                else
-                {
-                    if (buff > result)
-                    {
-                        result = buff;
-                    }
-                    buff = 1;
-                }
-            }
-
+        { 
             if (!str.Any(x => x > 64 && x < 91 || (x > 96 && x < 123)))
             {
                 return 0;
             }
-            return result;
+            return MaxConsecutiveSymbols(str, (x, i) => i < x.Length - 1 && (x[i + 1] == x[i]) &&
+                                                        (x[i] > 64 && x[i] < 91 || (x[i] > 96 && x[i] < 123)));
         }
     }
 }

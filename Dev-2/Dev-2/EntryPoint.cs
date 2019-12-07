@@ -14,12 +14,16 @@ namespace Dev_2
         {
                 try
                 {
-                    string str = args[0];
-                    StringAnalyzer analyzer = new StringAnalyzer();
-                    Console.WriteLine("Max identical digits: " + analyzer.MaxOfIdenticalConsecutiveDigits(str));
-                    Console.WriteLine("Max identical latins: " + analyzer.MaxOfIdenticalConsecutiveLatinSymbols(str));
-                    Console.WriteLine("Max not identical symbols: " + analyzer.MaxOfNotIdenticalConsecutiveSymbols(str));
-                }                    
+                var analyzer = new Dev_2.StringAnalyzer();
+                int expected = 3;
+                string actual = "14912ZzZZZ";
+                Console.WriteLine( analyzer.MaxOfIdenticalConsecutiveLatinSymbols(actual));
+                //string str = args[0];
+                //StringAnalyzer analyzer = new StringAnalyzer();
+                //Console.WriteLine("Max identical digits: " + analyzer.MaxOfIdenticalConsecutiveDigits(str));
+                //Console.WriteLine("Max identical latins: " + analyzer.MaxOfIdenticalConsecutiveLatinSymbols(str));
+                //Console.WriteLine("Max not identical symbols: " + analyzer.MaxOfNotIdenticalConsecutiveSymbols(str));
+            }                    
                 catch(Exception e)
                 {
                     Console.WriteLine(e.Message);
