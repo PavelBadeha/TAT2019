@@ -10,8 +10,7 @@ namespace Dev_3
         /// <summary>
         /// Main method
         /// </summary>
-        /// <param name="args"></param>
-        static void Main(string[] args)
+        static void Main()
         {
             while (true)
             {
