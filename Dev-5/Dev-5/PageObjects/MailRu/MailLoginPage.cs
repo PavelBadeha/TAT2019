@@ -29,6 +29,8 @@ namespace Dev_5
             {
                throw new NoValidPageException("This no login page");
             }
+            _usernameInput = driver.GetIWebElementBy(_usernameLocator);
+            _passwordInput = driver.GetIWebElementBy(_passwordLocator);
         }
 
         /// <summary>
@@ -38,7 +40,6 @@ namespace Dev_5
         /// <returns>Web element of username field</returns>
         public IWebElement TypeUserName(string username)
         {
-            _usernameInput = driver.GetIWebElementBy(_usernameLocator);
             _usernameInput.SendKeys(username);
             return _usernameInput;
         }
@@ -50,7 +51,6 @@ namespace Dev_5
         /// <returns>Web element of password field</returns>
         public IWebElement TypePassword(string password)
         {
-            _passwordInput = driver.GetIWebElementBy(_passwordLocator);
             _passwordInput.SendKeys(password);
             return _passwordInput;
         }

@@ -24,16 +24,16 @@ namespace Dev_5
             {
                 throw new NoValidPageException("This no inbox page");
             }
+            _usernameInput = driver.GetIWebElementBy(_usernameInputLocator);
+            _passwordInput = driver.GetIWebElementBy(_passwordInputLocator);
         }
         public IWebElement TypeUserName(string username)
         {
-            _usernameInput = _wait.Until(ExpectedConditions.ElementIsVisible(_usernameInputLocator));
             _usernameInput.SendKeys(username);
             return _usernameInput;
         }
         public IWebElement TypePassword(string password)
         {
-            _passwordInput = _wait.Until(ExpectedConditions.ElementIsVisible(_passwordInputLocator));
             _passwordInput.SendKeys(password);
             return _passwordInput;
         }

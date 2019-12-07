@@ -40,6 +40,10 @@ namespace Dev_5
             {
                throw new NoValidPageException("This no inbox page");
             }
+
+            _unreadMessage = driver.GetIWebElementBy(_messageLocator);
+            _unreadMessagesCounter = _wait.Until(ExpectedConditions.ElementExists(_unreadMessagesCounterLocator));
+            _sendMessageButton = driver.GetIWebElementBy(_sendMessageButtonLocator);
         }
 
         /// <summary>
@@ -47,8 +51,7 @@ namespace Dev_5
         /// </summary>
         /// <returns></returns>
         public string GetUnreadMessagesCount()
-        {
-            _unreadMessagesCounter = _wait.Until(ExpectedConditions.ElementExists(_unreadMessagesCounterLocator));
+        {            
             return _unreadMessagesCounter.Text;
         }
 
@@ -58,9 +61,7 @@ namespace Dev_5
         public void ReadUnreadMessage()
         {
             if (GetUnreadMessagesCount()!=string.Empty) 
-            {
-                _unreadMessage = driver.GetIWebElementBy(_messageLocator);
-                Thread.Sleep(500);
+            {              
                 _unreadMessage.Click();
                 
                 if( _wait.Until(ExpectedConditions.TitleIs("Почта Mail.ru")))
@@ -77,7 +78,6 @@ namespace Dev_5
         /// <param name="message">Message</param>
         public void SendMessage(string recipientEmail, string message)
         {
-            _sendMessageButton = driver.GetIWebElementBy(_sendMessageButtonLocator);
             _sendMessageButton.Click();
 
             _recipientEmailField = driver.GetIWebElementBy(_recipientEmailFiedLocator);
